@@ -4,12 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-<<<<<<< HEAD
-    "content-hash": "626b9e7ddd47fb7eff9aaa53cce0c9ad",
-    "packages": [
-        {
-=======
-    "content-hash": "8de55831b151bf87ea7306153147d459",
+    "content-hash": "39b743bacbc85f5330b7afd72f738961",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -66,7 +61,6 @@
             "time": "2024-10-01T13:55:55+00:00"
         },
         {
->>>>>>> 3a4de4d2bddbc89265a3d3762026aeb332fff18b
             "name": "brick/math",
             "version": "0.12.1",
             "source": {
@@ -196,8 +190,6 @@
             "time": "2024-02-09T16:56:22+00:00"
         },
         {
-<<<<<<< HEAD
-=======
             "name": "dasprid/enum",
             "version": "1.0.6",
             "source": {
@@ -248,7 +240,6 @@
             "time": "2024-08-09T14:30:48+00:00"
         },
         {
->>>>>>> 3a4de4d2bddbc89265a3d3762026aeb332fff18b
             "name": "dflydev/dot-access-data",
             "version": "v3.0.3",
             "source": {
@@ -1168,8 +1159,6 @@
             "time": "2023-12-03T19:50:20+00:00"
         },
         {
-<<<<<<< HEAD
-=======
             "name": "laravel/fortify",
             "version": "v1.25.2",
             "source": {
@@ -1235,7 +1224,6 @@
             "time": "2025-01-10T20:33:47+00:00"
         },
         {
->>>>>>> 3a4de4d2bddbc89265a3d3762026aeb332fff18b
             "name": "laravel/framework",
             "version": "v11.38.2",
             "source": {
@@ -1450,8 +1438,6 @@
             "time": "2025-01-15T00:06:46+00:00"
         },
         {
-<<<<<<< HEAD
-=======
             "name": "laravel/jetstream",
             "version": "v5.3.4",
             "source": {
@@ -1519,7 +1505,6 @@
             "time": "2024-12-10T15:11:20+00:00"
         },
         {
->>>>>>> 3a4de4d2bddbc89265a3d3762026aeb332fff18b
             "name": "laravel/prompts",
             "version": "v0.3.3",
             "source": {
@@ -1579,8 +1564,6 @@
             "time": "2024-12-30T15:53:31+00:00"
         },
         {
-<<<<<<< HEAD
-=======
             "name": "laravel/sanctum",
             "version": "v4.0.7",
             "source": {
@@ -1645,7 +1628,6 @@
             "time": "2024-12-11T16:40:21+00:00"
         },
         {
->>>>>>> 3a4de4d2bddbc89265a3d3762026aeb332fff18b
             "name": "laravel/serializable-closure",
             "version": "v2.0.1",
             "source": {
@@ -2324,8 +2306,6 @@
             "time": "2024-12-08T08:18:47+00:00"
         },
         {
-<<<<<<< HEAD
-=======
             "name": "livewire/livewire",
             "version": "v3.5.18",
             "source": {
@@ -2467,7 +2447,6 @@
             "time": "2024-12-10T15:32:06+00:00"
         },
         {
->>>>>>> 3a4de4d2bddbc89265a3d3762026aeb332fff18b
             "name": "monolog/monolog",
             "version": "3.8.1",
             "source": {
@@ -2970,8 +2949,6 @@
             "time": "2024-11-21T10:39:51+00:00"
         },
         {
-<<<<<<< HEAD
-=======
             "name": "paragonie/constant_time_encoding",
             "version": "v3.0.0",
             "source": {
@@ -3039,7 +3016,6 @@
             "time": "2024-05-08T12:36:18+00:00"
         },
         {
->>>>>>> 3a4de4d2bddbc89265a3d3762026aeb332fff18b
             "name": "phpoption/phpoption",
             "version": "1.9.3",
             "source": {
@@ -3115,8 +3091,6 @@
             "time": "2024-07-20T21:41:07+00:00"
         },
         {
-<<<<<<< HEAD
-=======
             "name": "pragmarx/google2fa",
             "version": "v8.0.3",
             "source": {
@@ -3218,7 +3192,6 @@
             "time": "2021-02-03T23:26:27+00:00"
         },
         {
->>>>>>> 3a4de4d2bddbc89265a3d3762026aeb332fff18b
             "name": "psr/clock",
             "version": "1.0.0",
             "source": {

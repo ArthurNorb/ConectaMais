@@ -7,15 +7,12 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "laravel/fortify": "^1.25",
         "laravel/framework": "^11.31",
-<<<<<<< HEAD
-        "laravel/tinker": "^2.9"
-=======
         "laravel/jetstream": "^5.3",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
         "livewire/livewire": "^3.0"
->>>>>>> 3a4de4d2bddbc89265a3d3762026aeb332fff18b
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
