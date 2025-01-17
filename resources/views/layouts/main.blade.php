@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3a4de4d2bddbc89265a3d3762026aeb332fff18b
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<<<<<<< HEAD
 
     {{-- Aba do navegador --}}
     <title>@yield('title')</title>
@@ -51,3 +55,18 @@
 </body>
 
 </html>
+=======
+    
+    <title>@yield('title')</title>
+    <link rel="icon" href="img/logo conecta.png" type="image/png">
+
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            
+        </nav>
+    </header>
+</body>
+</html>
+>>>>>>> 3a4de4d2bddbc89265a3d3762026aeb332fff18b
