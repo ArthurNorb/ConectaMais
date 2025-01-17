@@ -36,11 +36,14 @@
             </div>
             <div class="navbar-search">
                 <input type="text" placeholder="Procurar contatos...">
-                <button>
-                    <ion-icon name="search-outline"></ion-icon>
+                <button id="search-btn">
+                    <ion-icon name="search-sharp" class="navbar-icon"></ion-icon>
                 </button>
             </div>
             <div class="navbar-right">
+                <a href="#" class="navbar-links">
+                    <ion-icon name="person-add-sharp" class="navbar-icon"></ion-icon>
+                </a>
                 <a href="#" class="profile">
                     <img src="/img/lego.jpg" alt="My Profile">
                 </a>
