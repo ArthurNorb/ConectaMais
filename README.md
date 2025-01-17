@@ -23,8 +23,8 @@ Conecta+ é uma aplicação web de agenda telefônica desenvolvida com Laravel J
 ## Tecnologias Utilizadas
 
 - **Laravel 10** com **Jetstream**
-- **Tailwind CSS** para estilização
-- **MySQL** como banco de dados
+- **CSS** para estilização
+- **MariaDB** como banco de dados
 
 ## Pré-requisitos
 
