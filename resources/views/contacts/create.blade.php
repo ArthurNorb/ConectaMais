@@ -7,22 +7,28 @@
     <section class="add-contact">
         <h1>Adicionar Contato</h1>
         <form action="/contacts" method="post" enctype="multipart/form-data">
-            <div class="form-group">
-                <label for="photo">Foto</label>
-                <input type="file" id="photo" name="photo" accept="image/*">
-            </div>
-            <div class="form-group">
-                <label for="name">Nome</label>
-                <input type="text" id="name" name="name" placeholder="Nome completo" required>
-            </div>
-            <div class="form-group">
-                <label for="address">Endereço Completo</label>
-                <input type="text" id="address" name="address" placeholder="Rua, número, cidade, estado" required>
-            </div>
-            <div class="form-group">
-                <label for="birthday">Data de Aniversário</label>
-                <input type="date" id="birthday" name="birthday" required>
-            </div>
+            <fieldset id="personal-info-field">
+                <legend>Informações pessoais</legend>
+                <div class="form-group">
+                    <label for="photo">Foto</label>
+                    <input type="file" id="photo" name="photo" accept="image/*">
+                </div>
+                <div class="form-group">
+                    <label for="name">Nome</label>
+                    <input type="text" id="name" name="name" placeholder="Nome completo" required>
+                </div>
+                <div class="form-group">
+                    <label for="birthday">Data de Aniversário</label>
+                    <input type="date" id="birthday" name="birthday" required>
+                </div>
+            </fieldset>
+            <fieldset id="addres-fieal">
+                <div class="form-group">
+                    <legend>Endereço</legend>
+                    <label for="address">Endereço Completo</label>
+                    <input type="text" id="address" name="address" placeholder="Rua, número, cidade, estado" required>
+                </div>
+            </fieldset>
             <fieldset>
                 <legend>Contatos</legend>
                 <div class="form-group">
