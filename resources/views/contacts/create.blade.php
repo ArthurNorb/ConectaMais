@@ -15,18 +15,37 @@
                 </div>
                 <div class="form-group">
                     <label for="name">Nome</label>
-                    <input type="text" id="name" name="name" placeholder="Nome" required>
+                    <div class="name-container">
+                        <input type="text" id="name" name="name" placeholder="Nome" required>
+                        <input type="text" id="lastname" name="lastname" placeholder="Sobrenome" required>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="birthday">Data de Aniversário</label>
                     <input type="date" id="birthday" name="birthday" required>
                 </div>
             </fieldset>
-            <fieldset id="addres-fieal">
+            <fieldset id="address-field">
+                <legend>Endereço</legend>
                 <div class="form-group">
-                    <legend>Endereço</legend>
-                    <label for="address">Endereço Completo</label>
-                    <input type="text" id="address" name="address" placeholder="Rua, número, cidade, estado" required>
+                    <div class="address-containers">
+                        <div class="address-container1">
+                            <label for="street">Rua</label>
+                            <input type="text" id="street" name="street" placeholder="Rua São José">
+                            <label for="number">Número</label>
+                            <input type="number" id="number" name="number" placeholder="123">
+                            <label for="neighborhood">Bairro</label>
+                            <input type="text" id="neighborhood" name="neighborhood" placeholder="Centro">
+                        </div>
+                        <div class="address-container2">
+                            <label for="city">Cidade</label>
+                            <input type="text" id="city" name="city" placeholder="Rio de Janeiro">
+                            <label for="state">Estado</label>
+                            <input type="text" id="state" name="state" placeholder="RJ">
+                            <label for="cep">CEP</label>
+                            <input type="number" id="cep" name="cep" placeholder="123456-78">
+                        </div>
+                    </div>
                 </div>
             </fieldset>
             <fieldset>
@@ -43,9 +62,21 @@
                     <label for="email">Email</label>
                     <input type="email" id="email" name="email" placeholder="exemplo@email.com">
                 </div>
-                <div class="form-group">
-                    <label for="social">Outros Contatos (Facebook, Instagram, etc.)</label>
-                    <input type="text" id="social" name="social" placeholder="Facebook, Instagram, X, etc.">
+            </fieldset>
+            <fieldset class="social-media-field">
+                <legend for="">Redes Sociais</legend>
+                <div class="form-group">                    
+                    <div class="social-container">
+                        <label for="social-name">Nome da rede</label>
+                        <input type="text" id="social-name" name="social-name" placeholder="Instagram">
+                        <label for="social-link">Link</label>
+                        <input type="text" id="social-link" name="social-link" placeholder="instagram.com/username">
+                    </div>
+                </div>
+                <div class="add-social-media">
+                    <a href="#" class="add-social">
+                        <ion-icon name="add-sharp"></ion-icon>
+                    </a>
                 </div>
             </fieldset>
             <div class="form-group">

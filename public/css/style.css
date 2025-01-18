@@ -74,7 +74,7 @@ body {
 }
 
 .navbar-search button ion-icon:hover {
-    color: #1a272e ;
+    color: #1a272e;
 }
 
 .navbar-right {
@@ -131,18 +131,34 @@ body {
     margin-bottom: 25px;
 }
 
+.address-container1 {
+    margin-bottom: 20px;
+}
+
+.name-container input,
+.address-container1 input,
+.address-container2 input,
+.social-container input {
+    margin-right: 20px;
+}
+
 .form-group label {
     font-weight: bold;
     margin-bottom: 10px;
 }
 
 .form-group input {
-    padding: 5px 10px;
-    font-size: 16px;
+    padding: 10px 10px;
+    font-size: 14px;
     border: none;
     background-color: #f1f1f1;
     color: #333333;
     border-radius: 4px;
+}
+
+.form-group input:focus,
+.form-group input:hover {
+    outline: none;
 }
 
 .form-group button {
@@ -172,3 +188,19 @@ legend {
     padding: 0 10px;
 }
 
+.social-media-field .form-group {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.add-social {
+    font-size: 23px;
+    color: #22323F;
+    margin: 7px 20px 0 0;
+    padding: 0;
+}
+
+.add-social:hover {
+    color: #1a272e;
+}
