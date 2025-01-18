@@ -114,7 +114,6 @@ body {
     padding: 25px;
     background: #fff;
     border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     color: #22323F;
 }
 
@@ -131,33 +130,21 @@ body {
     margin-bottom: 25px;
 }
 
-.address-container1 {
-    margin-bottom: 20px;
-}
-
-.name-container input,
-.address-container1 input,
-.address-container2 input,
-.social-container input {
-    margin-right: 20px;
-}
-
 .form-group label {
     font-weight: bold;
     margin-bottom: 10px;
 }
 
 .form-group input {
-    padding: 10px 10px;
-    font-size: 14px;
+    padding: 5px 10px;
+    font-size: 16px;
     border: none;
     background-color: #f1f1f1;
     color: #333333;
     border-radius: 4px;
 }
 
-.form-group input:focus,
-.form-group input:hover {
+.form-group input:focus, .form-group input:hover {
     outline: none;
 }
 
@@ -188,19 +175,31 @@ legend {
     padding: 0 10px;
 }
 
-.social-media-field .form-group {
+.social-container {
     display: flex;
-    align-items: flex-start;
     flex-direction: column;
 }
 
-.add-social {
-    font-size: 23px;
-    color: #22323F;
-    margin: 7px 20px 0 0;
-    padding: 0;
+.social-container .input-button-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.add-social:hover {
+.social-container .input-button-container input {
+    flex-grow: 1;
+}
+
+.social-container input {
+    margin-bottom: 10px;
+}
+
+.social-container .add-social {
+    font-size: 23px;
+    color: #22323F;
+    cursor: pointer;
+}
+
+.social-container .add-social:hover {
     color: #1a272e;
 }

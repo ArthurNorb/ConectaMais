@@ -70,13 +70,13 @@
                         <label for="social-name">Nome da rede</label>
                         <input type="text" id="social-name" name="social-name" placeholder="Instagram">
                         <label for="social-link">Link</label>
-                        <input type="text" id="social-link" name="social-link" placeholder="instagram.com/username">
+                        <div class="input-button-container">
+                            <input type="text" id="social-link" name="social-link" placeholder="instagram.com/username">
+                            <a href="#" class="add-social">
+                                <ion-icon name="add-sharp"></ion-icon>
+                            </a>
+                        </div>
                     </div>
-                </div>
-                <div class="add-social-media">
-                    <a href="#" class="add-social">
-                        <ion-icon name="add-sharp"></ion-icon>
-                    </a>
                 </div>
             </fieldset>
             <div class="form-group">
