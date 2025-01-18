@@ -15,7 +15,7 @@
                 </div>
                 <div class="form-group">
                     <label for="name">Nome</label>
-                    <input type="text" id="name" name="name" placeholder="Nome completo" required>
+                    <input type="text" id="name" name="name" placeholder="Nome" required>
                 </div>
                 <div class="form-group">
                     <label for="birthday">Data de Aniversário</label>

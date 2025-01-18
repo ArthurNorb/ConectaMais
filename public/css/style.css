@@ -127,21 +127,21 @@ body {
 .form-group {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
     margin-bottom: 25px;
 }
 
 .form-group label {
-    width: 90%;
     font-weight: bold;
     margin-bottom: 10px;
 }
 
 .form-group input {
-    width: 90%;
-    padding: 10px;
-    font-size: 15px;
-    border: 1px solid #ccc;
+    padding: 5px 10px;
+    font-size: 16px;
+    border: none;
+    background-color: #f1f1f1;
+    color: #333333;
     border-radius: 4px;
 }
 
