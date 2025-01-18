@@ -41,7 +41,7 @@
                 </button>
             </div>
             <div class="navbar-right">
-                <a href="#" class="navbar-links">
+                <a href="/contacts/create" class="navbar-links">
                     <ion-icon name="person-add-sharp" class="navbar-icon"></ion-icon>
                 </a>
                 <a href="#" class="profile">
@@ -50,6 +50,9 @@
             </div>
         </nav>
     </header>
+    <main>
+        @yield('content')
+    </main>
 </body>
 
 </html>
