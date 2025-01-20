@@ -175,31 +175,96 @@ legend {
     padding: 0 10px;
 }
 
-.social-container {
+.form-group {
     display: flex;
     flex-direction: column;
-}
-
-.social-container .input-button-container {
-    display: flex;
-    align-items: center;
     gap: 10px;
 }
 
-.social-container .input-button-container input {
+.address-row {
+    display: flex;
+    gap: 20px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
     flex-grow: 1;
 }
 
-.social-container input {
-    margin-bottom: 10px;
+.large {
+    flex: 2;
 }
 
-.social-container .add-social {
-    font-size: 23px;
-    color: #22323F;
+.medium {
+    flex: 1.5;
+}
+
+.small {
+    flex: 1;
+}
+
+input[type="text"] {
+    padding: 5px;
+    font-size: 14px;
+    width: 100%; 
+}
+
+
+#social-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.social-row {
+    display: flex;
+    align-items: center; 
+    gap: 20px; 
+}
+
+.social-row .input-group {
+    flex-grow: 1;
+}
+
+.social-row .input-group:first-child {
+    flex: 0.4; 
+}
+
+.social-row .input-group:last-child {
+    flex: 0.8; 
+}
+
+.social-row .input-group label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.social-row input[type="text"] {
+    padding: 5px 10px;
+    font-size: 16px;
+    border: none;
+    background-color: #f1f1f1;
+    color: #333333;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.social-row button {
+    padding: 5px 10px;
+    font-size: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #22323F;
+    color: #fff;
     cursor: pointer;
+    align-self: flex-end;
+    margin-top: 22px;
 }
 
-.social-container .add-social:hover {
-    color: #1a272e;
+.social-row button:hover {
+    background: #1a272e;
 }
+
+

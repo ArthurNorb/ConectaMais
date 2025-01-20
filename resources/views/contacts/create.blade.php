@@ -14,11 +14,12 @@
                     <input type="file" id="photo" name="photo" accept="image/*">
                 </div>
                 <div class="form-group">
-                    <label for="name">Nome</label>
-                    <div class="name-container">
-                        <input type="text" id="name" name="name" placeholder="Nome" required>
-                        <input type="text" id="lastname" name="lastname" placeholder="Sobrenome" required>
-                    </div>
+                    <label for="name">Nome Completo</label>
+                        <input type="text" id="name" name="name" placeholder="Nome Completo" required>
+                </div>
+                <div class="form-group">
+                    <label for="nickname">Apelido</label>
+                        <input type="text" id="nickname" name="nickname" placeholder="Apelido" required>
                 </div>
                 <div class="form-group">
                     <label for="birthday">Data de Aniversário</label>
@@ -28,26 +29,37 @@
             <fieldset id="address-field">
                 <legend>Endereço</legend>
                 <div class="form-group">
-                    <div class="address-containers">
-                        <div class="address-container1">
+                    <div class="address-row">
+                        <div class="input-group large">
                             <label for="street">Rua</label>
                             <input type="text" id="street" name="street" placeholder="Rua São José">
+                        </div>
+                        <div class="input-group small">
                             <label for="number">Número</label>
-                            <input type="number" id="number" name="number" placeholder="123">
+                            <input type="text" id="number" name="number" placeholder="123">
+                        </div>
+                        <div class="input-group medium">
                             <label for="neighborhood">Bairro</label>
                             <input type="text" id="neighborhood" name="neighborhood" placeholder="Centro">
                         </div>
-                        <div class="address-container2">
+                    </div>
+                    <div class="address-row">
+                        <div class="input-group large">
                             <label for="city">Cidade</label>
                             <input type="text" id="city" name="city" placeholder="Rio de Janeiro">
+                        </div>
+                        <div class="input-group small">
                             <label for="state">Estado</label>
                             <input type="text" id="state" name="state" placeholder="RJ">
+                        </div>
+                        <div class="input-group medium">
                             <label for="cep">CEP</label>
-                            <input type="number" id="cep" name="cep" placeholder="123456-78">
+                            <input type="text" id="cep" name="cep" placeholder="123456-78">
                         </div>
                     </div>
                 </div>
             </fieldset>
+            
             <fieldset>
                 <legend>Contatos</legend>
                 <div class="form-group">
@@ -63,19 +75,19 @@
                     <input type="email" id="email" name="email" placeholder="exemplo@email.com">
                 </div>
             </fieldset>
-            <fieldset class="social-media-field">
-                <legend for="">Redes Sociais</legend>
-                <div class="form-group">                    
-                    <div class="social-container">
-                        <label for="social-name">Nome da rede</label>
-                        <input type="text" id="social-name" name="social-name" placeholder="Instagram">
-                        <label for="social-link">Link</label>
-                        <div class="input-button-container">
-                            <input type="text" id="social-link" name="social-link" placeholder="instagram.com/username">
-                            <a href="#" class="add-social">
-                                <ion-icon name="add-sharp"></ion-icon>
-                            </a>
+            <fieldset id="social-field">
+                <legend>Redes Sociais</legend>
+                <div id="social-container">
+                    <div class="social-row">
+                        <div class="input-group">
+                            <label for="social-name-0">Nome da rede</label>
+                            <input type="text" id="social-name-0" name="socials[0][name]" placeholder="Nome da rede">
                         </div>
+                        <div class="input-group">
+                            <label for="social-link-0">Link</label>
+                            <input type="text" id="social-link-0" name="socials[0][link]" placeholder="Link">
+                        </div>
+                        <button type="button" id="add-social" onclick="addSocial()">+</button>
                     </div>
                 </div>
             </fieldset>
