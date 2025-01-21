@@ -7,7 +7,7 @@
 
     {{-- Aba do navegador --}}
     <title>@yield('title')</title>
-    <link rel="icon" href="img/logo conecta.png" type="image/png">
+    <link rel="icon" href="/img/logo conecta.png" type="image/png">
 
     {{-- Fontes do Google --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,6 +23,8 @@
     {{-- CSS da Aplicação --}}
     <link rel="stylesheet" href="/css/style.css">
 
+    @vite('resources/css/app.css', 'resources/js/app.js')
+
 </head>
 
 <body>
@@ -34,8 +36,8 @@
                     <span>Conecta+</span>
                 </a>
             </div>
-            <div class="navbar-search">
-                <input type="text" placeholder="Procurar contatos...">
+            <div class="navbar-search" >
+                <input type="text" class='bg-black' placeholder="Procurar contatos...">
                 <button id="search-btn">
                     <ion-icon name="search-sharp" class="navbar-icon"></ion-icon>
                 </button>

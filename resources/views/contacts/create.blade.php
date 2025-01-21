@@ -81,11 +81,11 @@
                     <div class="social-row">
                         <div class="input-group">
                             <label for="social-name-0">Nome da rede</label>
-                            <input type="text" id="social-name-0" name="socials[0][name]" placeholder="Nome da rede">
+                            <input type="text" id="social-name-0" name="socials[0][name]" placeholder="Instagram">
                         </div>
                         <div class="input-group">
                             <label for="social-link-0">Link</label>
-                            <input type="text" id="social-link-0" name="socials[0][link]" placeholder="Link">
+                            <input type="text" id="social-link-0" name="socials[0][link]" placeholder="instagram.com/username">
                         </div>
                         <button type="button" id="add-social" onclick="addSocial()">+</button>
                     </div>
