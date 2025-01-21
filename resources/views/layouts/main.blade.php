@@ -21,7 +21,7 @@
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
     {{-- CSS da Aplicação --}}
-    {{-- <link rel="stylesheet" href="/css/style.css"> --}}
+    {{-- <link rel="stylesheet" href="/css/style.css">  --}}
 
     {{-- Vite --}}
     @vite('resources/css/app.css', 'resources/js/app.js')
@@ -32,7 +32,7 @@
     <header class="bg-white">
         <nav class="flex items-center justify-between p-3 mx-auto max-w-7xl lg:px-8 " aria-label="Global">
           <div class="flex lg:flex-1">
-            <a href="#" class="-m-1.5 p-1.5">
+            <a href="/" class="-m-1.5 p-1.5">
               <span class="sr-only">Conecta +</span>
               <img class="w-auto h-14" src="/img/logo conecta.png" alt="">
             </a>
@@ -41,7 +41,7 @@
             <div class="relative ">
                 <button type="button" class="flex items-center p-2 font-semibold border-2 rounded-full text-themeColor hover:text-white border-themeColor hover:bg-themeColor gap-x-1 text-sm/6" aria-expanded="false">
                     <a href="/contacts/create">Adicionar Novo Contato</a>
-                  </button>
+                </button>
           </div>
           <div class="hidden lg:flex lg:flex-1 lg:justify-end">
             <a href="#" class="p-2 font-semibold border-2 border-white rounded-full text-themeColor hover:text-themeColorLight text-sm/6">Log in <span aria-hidden="true">&rarr;</span></a>
