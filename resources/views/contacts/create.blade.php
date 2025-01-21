@@ -16,18 +16,38 @@
                         <div class="form">
                             <h4 class="py-2 mr-auto text-sm font-bold text-themeColor">Informações Pessoais</h4>
                             <div class="mb-3 md:space-y-2">
-                                <label class="pt-2 text-xs font-semibold text-themeColor">Foto </label>
-                                <div class="flex items-center pb-6">
-                                    <div class="flex-none w-16 h-16 mr-4 overflow-hidden border rounded-xl">
-                                        <img class="object-cover w-16 h-16 mr-4" src="/img/no-profile-pic-icon.jpg"
-                                            alt="Avatar Upload">
-                                    </div>
-                                    <label class="cursor-pointer ">
-                                        <button type="button"
-                                            class="px-4 py-2 text-sm text-white border-2 border-white rounded-full bg-themeColor hover:bg-white hover:text-themeColor hover:border-themeColor">Procurar</button>
-                                    </label>
+                              <label class="pt-2 text-xs font-semibold text-themeColor">Foto</label>
+                              <div class="flex items-center pb-6">
+                                <div class="flex-none w-16 h-16 mr-4 overflow-hidden border rounded-xl">
+                                  <img id="profile-pic" class="object-cover w-16 h-16 mr-4" src="/img/no-profile-pic-icon.jpg" alt="Avatar Upload">
                                 </div>
+                                <label class="cursor-pointer">
+                                  <input type="file" accept="image/*" class="hidden" id="file-input">
+                                  <button type="button" 
+                                    onclick="document.getElementById('file-input').click()" 
+                                    class="px-4 py-2 text-sm text-white border-2 border-white rounded-full bg-themeColor hover:bg-white hover:text-themeColor hover:border-themeColor">
+                                    Procurar
+                                  </button>
+                                </label>
+                              </div>
                             </div>
+                          </div>
+                          
+                          <script>
+                            const fileInput = document.getElementById('file-input');
+                            const profilePic = document.getElementById('profile-pic');
+                            
+                            fileInput.addEventListener('change', () => {
+                              const file = fileInput.files[0];
+                              if (file) {
+                                const reader = new FileReader();
+                                reader.onload = (e) => {
+                                  profilePic.src = e.target.result;
+                                };
+                                reader.readAsDataURL(file);
+                              }
+                            });
+                          </script>                          
                             <div class="flex-row w-full text-xs md:flex md:space-x-4">
                                 <div class="w-full mb-3 space-y-2 text-xs">
                                     <label class="py-2 font-semibold text-themeColor">Nome <abbr
