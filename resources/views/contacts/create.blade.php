@@ -33,21 +33,7 @@
                         </div>
                     </div>
 
-                    <script>
-                        const fileInput = document.getElementById('file-input');
-                        const profilePic = document.getElementById('profile-pic');
-
-                        fileInput.addEventListener('change', () => {
-                            const file = fileInput.files[0];
-                            if (file) {
-                                const reader = new FileReader();
-                                reader.onload = (e) => {
-                                    profilePic.src = e.target.result;
-                                };
-                                reader.readAsDataURL(file);
-                            }
-                        });
-                    </script>
+                    
                     <div class="flex-row w-full text-xs md:flex md:space-x-4">
                         <div class="w-full mb-3 space-y-2 text-xs">
                             <label class="py-2 font-semibold text-themeColor">Nome <abbr title="required">*</abbr></label>
@@ -56,7 +42,7 @@
                                 required="required" type="text">
                         </div>
                         <div class="w-full mb-3 space-y-2 text-xs">
-                            <label class="py-2 font-semibold text-themeColor">Sobreome <abbr
+                            <label class="py-2 font-semibold text-themeColor">Sobrenome <abbr
                                     title="required">*</abbr></label>
                             <input placeholder="Sobrenome"
                                 class="block w-full h-10 px-4 border rounded-lg appearance-none bg-grey-lighter text-grey-darker border-grey-lighter"
@@ -200,5 +186,21 @@
         </div>
     </div>
 
+@section('scripts')
+    <script>
+        const fileInput = document.getElementById('file-input');
+        const profilePic = document.getElementById('profile-pic');
 
+        fileInput.addEventListener('change', () => {
+            const file = fileInput.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    profilePic.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+@endsection
 @endsection
