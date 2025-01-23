@@ -4,12 +4,12 @@
 
 @section('content')
 
-    <div class="min-h-screen bg-slate-100">
+    <div class="bg-slate-100">
         <div class="relative">
-            <div class="max-w-2xl py-32 mx-auto sm:py-48 ">
+            <div class="max-w-2xl py-32 mx-auto sm:py-36 ">
                 <div class="text-center">
                     <h1 class="text-5xl font-semibold tracking-tight text-themeColor text-balance sm:text-7xl">Conectando
-                        você a todas as suas redes</h1>
+                        você à todas as suas redes</h1>
                     <p class="mt-8 text-lg font-medium text-gray-500 text-pretty sm:text-xl/8">Com o Conecta+, todos seus
                         contatos estão sempre ao seu alcance. Simplifique sua vida unindo todas as suas conexões
                         em um só lugar. </p>
@@ -23,7 +23,9 @@
                 </div>
             </div>
         </div>
-    </div>
+        {{-- @auth
+        <h1>Você está logado</h1>
+        @endauth --}}
     </div>
 
 
