@@ -14,7 +14,8 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                sans: ['Roboto', 'Figtree', ...defaultTheme.fontFamily.sans],
+                atma: ['Atma', 'sans-serif',]
             },
             colors: {
                 themeColor: '#22323F',

@@ -9,19 +9,14 @@
     <title>@yield('title')</title>
     <link rel="icon" href="/img/logo conecta.png" type="image/png">
 
-    {{-- Fontes do Google --}}
+    <!-- Fontes do Google -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Atma:wght@300;400;500;600;700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Atma:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     {{-- Ion-icons --}}
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-
-    {{-- CSS da Aplicação --}}
-    {{-- <link rel="stylesheet" href="/css/style.css">  --}}
 
     {{-- Vite --}}
     @vite('resources/css/app.css', 'resources/js/app.js')
@@ -34,18 +29,19 @@
             <div class="flex items-center lg:flex-1">
                 <a href="/" class="-m-1.5 p-1.5 flex items-center">
                     <img class="w-auto h-14" src="/img/logo conecta.png" alt="Logo Conecta +">
-                    <span class="ml-2 text-3xl font-semibold text-themeColor" style="font-family: Atma">Conecta +</span>
+                    <span class="ml-2 text-3xl font-semibold text-themeColor font-atma">Conecta +</span>
                 </a>
             </div>
             <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-                <div class="relative mr-4">
-                    <a href="/contacts/create" class="flex items-center p-2 font-semibold border-2 rounded-full border-themeColor text-themeColor hover:text-white hover:bg-themeColor gap-x-1 text-sm/6">Adicionar Novo Contato</a>
-                </div>
+                
                 @guest
                 <a href="/login" class="p-2 font-semibold border-2 border-white rounded-full text-themeColor hover:text-themeColorLight text-sm/6">Log in <span aria-hidden="true">&rarr;</span></a>
                 @endguest
                 @auth
                 <a href="/login" class="p-2 font-semibold border-2 border-white rounded-full text-themeColor hover:text-themeColorLight text-sm/6">Log out <span aria-hidden="true">&rarr;</span></a>
+                <div class="relative mr-4">
+                    <a href="/contacts/create" class="flex items-center p-2 font-semibold border-2 rounded-full border-themeColor text-themeColor hover:text-white hover:bg-themeColor gap-x-1 text-sm/6">Adicionar Novo Contato</a>
+                </div>
                 @endauth
             </div>       
         <hr>
