@@ -12,17 +12,21 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Laravel\Fortify\Fortify;
+use App\Actions\Fortify\LoginResponse;
+use Laravel\Fortify\Contracts\LoginResponse as LoginResponseContract;
+use App\Actions\Fortify\RegisterResponse;
+use Laravel\Fortify\Contracts\RegisterResponse as RegisterResponseContract;
 
 class FortifyServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
      */
-    public function register(): void
+    public function register()
     {
-        //
+        $this->app->singleton(LoginResponseContract::class, LoginResponse::class);
+        $this->app->singleton(RegisterResponseContract::class, RegisterResponse::class);
     }
-
     /**
      * Bootstrap any application services.
      */
@@ -41,6 +45,14 @@ class FortifyServiceProvider extends ServiceProvider
 
         RateLimiter::for('two-factor', function (Request $request) {
             return Limit::perMinute(5)->by($request->session()->get('login.id'));
+        });
+
+        Fortify::loginView(function () {
+            return view('auth.login');
+        });
+
+        Fortify::registerView(function () {
+            return view('auth.register');
         });
     }
 }
