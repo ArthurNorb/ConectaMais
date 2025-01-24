@@ -1,6 +1,8 @@
 @extends('layouts.main')
 
 <title>Cadastro - Conecta+</title>
+<link rel="icon" href="/img/logo conecta.png" type="image/png">
+
 <x-guest-layout>
     <x-authentication-card>
         <x-slot name="logo">
