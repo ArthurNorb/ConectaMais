@@ -38,10 +38,13 @@
                 <a href="/login" class="p-2 font-semibold border-2 border-white rounded-full text-themeColor hover:text-themeColorLight text-sm/6">Log in <span aria-hidden="true">&rarr;</span></a>
                 @endguest
                 @auth
-                <a href="/login" class="p-2 font-semibold border-2 border-white rounded-full text-themeColor hover:text-themeColorLight text-sm/6">Log out <span aria-hidden="true">&rarr;</span></a>
                 <div class="relative mr-4">
-                    <a href="/contacts/create" class="flex items-center p-2 font-semibold border-2 rounded-full border-themeColor text-themeColor hover:text-white hover:bg-themeColor gap-x-1 text-sm/6">Adicionar Novo Contato</a>
+                    <a href="/contacts/create" class="flex items-center px-4 py-2 font-semibold border-2 rounded-full border-themeColor text-themeColor hover:text-white hover:bg-themeColor gap-x-1 text-sm/6">Adicionar Novo Contato</a>
                 </div>
+                <form action="/logout" method="POST">
+                    @csrf
+                    <button type="submit" class="p-2 font-semibold border-2 border-white rounded-full text-themeColor hover:text-themeColorLight text-sm/6">Log out <span aria-hidden="true">&rarr;</span></button>
+                </form>
                 @endauth
             </div>       
         <hr>
