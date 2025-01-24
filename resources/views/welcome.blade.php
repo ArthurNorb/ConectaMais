@@ -6,6 +6,7 @@
 
     <div class="bg-slate-100">
         <div class="relative">
+            {{ $contatos }}
             <div class="py-32 mx-auto sm:py-36 ">
                 <div class="text-center">
                     @guest

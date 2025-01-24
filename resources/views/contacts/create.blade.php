@@ -42,8 +42,7 @@
                                 required="required" type="text">
                         </div>
                         <div class="w-full mb-3 space-y-2 text-xs">
-                            <label class="py-2 font-semibold text-themeColor">Sobrenome <abbr
-                                    title="required">*</abbr></label>
+                            <label class="py-2 font-semibold text-themeColor">Sobrenome</label>
                             <input placeholder="Sobrenome"
                                 class="block w-full h-10 px-4 border rounded-lg appearance-none bg-grey-lighter text-grey-darker border-grey-lighter"
                                 required="required" type="text">
