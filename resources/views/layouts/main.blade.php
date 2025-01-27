@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,10 +21,9 @@
 
     {{-- Vite --}}
     @vite('resources/css/app.css', 'resources/js/app.js')
-
 </head>
 
-<body">
+<body>
     <header class="bg-white">
         <nav class="flex items-center justify-between p-3 mx-auto max-w-7xl lg:px-8" aria-label="Global">
             <div class="flex items-center lg:flex-1">
@@ -32,29 +32,85 @@
                     <span class="ml-2 text-3xl font-semibold text-themeColor font-atma">Conecta +</span>
                 </a>
             </div>
-            <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-                
-                @guest
-                <a href="/login" class="p-2 font-semibold border-2 border-white rounded-full text-themeColor hover:text-themeColorLight text-sm/6">Log in <span aria-hidden="true">&rarr;</span></a>
-                @endguest
-                @auth
-                <div class="relative mr-4">
-                    <a href="/contacts/create" class="flex items-center px-4 py-2 font-semibold border-2 rounded-full border-themeColor text-themeColor hover:text-white hover:bg-themeColor gap-x-1 text-sm/6">Adicionar Novo Contato</a>
+
+            @auth
+                {{-- Campo de pesquisa (aparece apenas para usuários autenticados) --}}
+                <div class="hidden lg:flex lg:items-center">
+                    <input type="text" placeholder="Pesquisar contatos"
+                        class="p-2 text-sm text-gray-600 border rounded-md w-72 focus:ring focus:ring-themeColorLight">
                 </div>
-                <form action="/logout" method="POST">
-                    @csrf
-                    <button type="submit" class="p-2 font-semibold border-2 border-white rounded-full text-themeColor hover:text-themeColorLight text-sm/6">Log out <span aria-hidden="true">&rarr;</span></button>
-                </form>
+            @endauth
+
+            <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+                @guest
+                    <a href="/login"
+                        class="p-2 font-semibold border-2 border-white rounded-full text-themeColor hover:text-themeColorLight text-sm/6">Log
+                        in <span aria-hidden="true">&rarr;</span></a>
+                @endguest
+
+                @auth
+                    <div class="relative mr-4">
+                        <a href="/contacts/create"
+                            class="flex items-center px-4 py-2 font-semibold border-2 rounded-full border-themeColor text-themeColor hover:text-white hover:bg-themeColor gap-x-1 text-sm/6">Adicionar
+                            Novo Contato</a>
+                    </div>
+                    <form action="/logout" method="POST">
+                        @csrf
+                        <button type="submit"
+                            class="p-2 font-semibold border-2 border-white rounded-full text-themeColor hover:text-themeColorLight text-sm/6">Log
+                            out <span aria-hidden="true">&rarr;</span></button>
+                    </form>
                 @endauth
-            </div>       
-        <hr>
-      </header>
-    <main>
-        <div class="relative flex items-center justify-center min-h-screen px-4 py-12 bg-slate-100 sm:px-6 lg:px-8">
-            @yield('content')
+            </div>
+            <button type="button"
+                class="inline-flex items-center p-2 text-gray-500 rounded-md lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-themeColor"
+                aria-expanded="false" id="menu-toggle">
+                <span class="sr-only">Open menu</span>
+                <ion-icon name="menu-outline" class="w-6 h-6"></ion-icon>
+            </button>
+        </nav>
+
+        {{-- Flyout menu (para telas menores) --}}
+        <div class="hidden" id="menu-flyout">
+            <div class="p-4 bg-white rounded-lg shadow-lg">
+                @guest
+                    <a href="/login" class="block mb-2 font-semibold text-gray-900">Log in</a>
+                @endguest
+
+                @auth
+                    <div class="relative mb-4">
+                        <input type="text" placeholder="Pesquisar contatos"
+                            class="w-full p-2 text-sm text-gray-600 border rounded-md focus:ring focus:ring-themeColorLight">
+                    </div>
+                    <a href="/contacts/create"
+                        class="block mb-2 font-semibold text-themeColor hover:text-themeColorLight">Adicionar Novo
+                        Contato</a>
+                    <form action="/logout" method="POST">
+                        @csrf
+                        <button type="submit"
+                            class="w-full font-semibold text-left text-themeColor hover:text-themeColorLight">Log
+                            out</button>
+                    </form>
+                @endauth
+            </div>
         </div>
+    </header>
+
+    <main>
+        @yield('content')
     </main>
+
     @yield('scripts')
+
+    <script>
+        // Toggle flyout menu
+        const menuToggle = document.getElementById('menu-toggle');
+        const menuFlyout = document.getElementById('menu-flyout');
+
+        menuToggle.addEventListener('click', () => {
+            menuFlyout.classList.toggle('hidden');
+        });
+    </script>
 </body>
 
 </html>

@@ -14,7 +14,7 @@ class ContatoController extends Controller
         $contatos = Pessoa::leftJoin('enderecos', 'pessoas.enderecos_id', 'enderecos.id')
         ->leftJoin('estados', 'enderecos.estados_id', 'estados.id')
         ->leftJoin('redes_sociais', 'pessoas.id', 'redes_sociais.pessoas_id')
-        ->select('pessoas.nome as nome_pessoa', 'pessoas.celular as celular_pessoa', 'estados.nome as nome_estado', 'pessoas.sobrenome as sobrenome_pessoa', 'pessoas.apelido')
+        ->select('pessoas.nome as nome_pessoa', 'pessoas.celular', 'estados.nome as nome_estado', 'pessoas.sobrenome', 'pessoas.apelido', 'pessoas.email', 'pessoas.avatar', 'pessoas.birthday')
         ->get();
 
         return view('welcome', compact('contatos'));
