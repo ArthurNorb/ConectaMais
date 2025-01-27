@@ -17,10 +17,10 @@ Route::middleware([
     })->name('dashboard');
 });
 
- Route::get('/contacts/create', [ContatoController::class, 'create']);
+ Route::get('/contacts/create', [ContatoController::class, 'create'])->middleware('auth');
 
 Route::post('/login', [AuthenticatedSessionController::class, 'store']);
-Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
+Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout')->middleware('auth');
 Route::post('/register', [RegisteredUserController::class, 'store']);
 
 Route::resources(['contatos' => ContatoController::class]);

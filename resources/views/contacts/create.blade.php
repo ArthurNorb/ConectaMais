@@ -5,7 +5,7 @@
 @section('content')
 
     <div class="relative flex flex-col items-center justify-center min-h-screen py-10 bg-slate-100">
-        <div class="z-10 w-full max-w-lg p-10 space-y-8 bg-white shadow-lg rounded-xl">
+        <div class="w-full max-w-2xl p-10 space-y-8 bg-white shadow-lg rounded-xl">
             <div class="grid grid-cols-1 gap-8">
                 <div class="flex flex-col ">
                     <div class="flex flex-col items-center sm:flex-row">
@@ -79,47 +79,23 @@
                             </div>
                         </div>
                         <div class="flex-row w-full text-xs md:flex md:space-x-4">
-                            <div class="mb-3 space-y-2 text-xs w-50">
+                            <div class="w-2/5 mb-3 space-y-2 text-xs">
                                 <label class="py-2 font-semibold text-themeColor">Cidade</label>
                                 <input placeholder="Cidade"
                                     class="block w-full h-10 px-4 border rounded-lg appearance-none bg-grey-lighter text-grey-darker border-grey-lighter"
                                     type="text">
                             </div>
-                            <div class="mb-3 space-y-2 text-xs w-15">
+                            <div class="w-1/5 mb-3 space-y-2 text-xs">
                                 <label class="py-2 font-semibold text-themeColor">Estado</label>
                                 <select
                                     class="block w-full h-10 px-4 border rounded-lg bg-grey-lighter text-grey-darker border-grey-lighter md:w-full">
                                     <option value="" disabled selected>UF</option>
-                                    <option value="AC">AC</option>
-                                    <option value="AL">AL</option>
-                                    <option value="AP">AP</option>
-                                    <option value="AM">AM</option>
-                                    <option value="BA">BA</option>
-                                    <option value="CE">CE</option>
-                                    <option value="DF">DF</option>
-                                    <option value="ES">ES</option>
-                                    <option value="GO">GO</option>
-                                    <option value="MA">MA</option>
-                                    <option value="MT">MT</option>
-                                    <option value="MS">MS</option>
-                                    <option value="MG">MG</option>
-                                    <option value="PA">PA</option>
-                                    <option value="PB">PB</option>
-                                    <option value="PR">PR</option>
-                                    <option value="PE">PE</option>
-                                    <option value="PI">PI</option>
-                                    <option value="RJ">RJ</option>
-                                    <option value="RN">RN</option>
-                                    <option value="RS">RS</option>
-                                    <option value="RO">RO</option>
-                                    <option value="RR">RR</option>
-                                    <option value="SC">SC</option>
-                                    <option value="SP">SP</option>
-                                    <option value="SE">SE</option>
-                                    <option value="TO">TO</option>
+                                    @foreach ($estados as $estado)
+                                        <option value="{{ $estado->sigla }}"> {{ $estado->sigla }} </option>
+                                    @endforeach
                                 </select>
                             </div>
-                            <div class="mb-3 space-y-2 text-xs w-35">
+                            <div class="w-2/5 mb-3 space-y-2 text-xs">
                                 <label class="py-2 font-semibold text-themeColor">CEP</label>
                                 <input placeholder="123456-78"
                                     class="block w-full h-10 px-4 border rounded-lg appearance-none bg-grey-lighter text-grey-darker border-grey-lighter"
@@ -158,9 +134,9 @@
                                     class="block w-full h-10 px-4 border rounded-lg appearance-none bg-grey-lighter text-grey-darker border-grey-lighter"
                                     type="text">
                             </div>
-                            <div class="flex items-center w-3/5 space-x-2">
+                            <div class="flex items-center w-3/5 space-x-2 space-y-2 text-xs">
                                 <div class="flex-1">
-                                    <label class="py-2 font-semibold text-themeColor">Link</label>
+                                    <label class="py-2 mb-2 font-semibold text-themeColor">Link</label>
                                     <input placeholder="instagram.com/username"
                                         class="block w-full h-10 px-4 border rounded-lg appearance-none bg-grey-lighter text-grey-darker border-grey-lighter"
                                         type="text">

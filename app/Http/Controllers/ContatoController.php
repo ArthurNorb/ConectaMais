@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Estado;
 use App\Models\Pessoa;
 use Illuminate\Http\Request;
 
@@ -25,7 +26,8 @@ class ContatoController extends Controller
      */
     public function create()
     {
-        return view('contacts.create');
+        $estados = Estado::all();
+        return view('contacts.create', compact('estados'));
     }
 
     /**
