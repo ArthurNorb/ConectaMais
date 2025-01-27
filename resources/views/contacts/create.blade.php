@@ -127,27 +127,7 @@
                             </div>
                         </div>
                         <h4 class="py-2 mr-auto text-sm font-bold text-themeColor">Redes Sociais</h4>
-                        <div class="flex-row items-center w-full text-xs md:flex md:space-x-4">
-                            <div class="w-2/5 mb-3 space-y-2 text-xs">
-                                <label class="py-2 font-semibold text-themeColor">Nome da Rede</label>
-                                <input placeholder="Instagram"
-                                    class="block w-full h-10 px-4 border rounded-lg appearance-none bg-grey-lighter text-grey-darker border-grey-lighter"
-                                    type="text">
-                            </div>
-                            <div class="flex items-center w-3/5 space-x-2 space-y-2 text-xs">
-                                <div class="flex-1">
-                                    <label class="py-2 mb-2 font-semibold text-themeColor">Link</label>
-                                    <input placeholder="instagram.com/username"
-                                        class="block w-full h-10 px-4 border rounded-lg appearance-none bg-grey-lighter text-grey-darker border-grey-lighter"
-                                        type="text">
-                                </div>
-                                <button type="button"
-                                    class="h-10 px-4 text-lg text-themeColor hover:text-themeColorDark ">
-                                    +
-                                </button>
-                            </div>
-                        </div>
-
+                        {{-- @livewire('social-media-fields') --}}
 
                         <p class="my-3 text-xs text-right text-red-500">Campos obrigatórios marcados com asterisco
                             <abbr title="Required field">*</abbr>

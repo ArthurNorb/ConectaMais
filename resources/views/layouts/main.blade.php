@@ -103,6 +103,8 @@
 
     <main>
         @yield('content')
+
+        @livewireScripts
     </main>
 
     @yield('scripts')

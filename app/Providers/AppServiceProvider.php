@@ -22,6 +22,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        \Livewire\Livewire::component('social-media-fields', \App\Http\Livewire\SocialMediaFields::class);
     }
 }
