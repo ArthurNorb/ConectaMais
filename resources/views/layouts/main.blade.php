@@ -34,10 +34,12 @@
             </div>
 
             @auth
-                {{-- Campo de pesquisa (aparece apenas para usuários autenticados) --}}
                 <div class="hidden lg:flex lg:items-center">
                     <input type="text" placeholder="Pesquisar contatos"
-                        class="p-2 text-sm text-gray-600 border rounded-md w-72 focus:ring focus:ring-themeColorLight">
+                        class="py-2 text-sm text-gray-600 border rounded-md w-80 hover:text-themeColorLight">
+                    <button type="submit" class="ml-2 text-gray-600">
+                        <ion-icon name="search-outline" class="text-gray-600 hover:text-themeColorLight"></ion-icon>
+                    </button>
                 </div>
             @endauth
 
@@ -65,7 +67,7 @@
             <button type="button"
                 class="inline-flex items-center p-2 text-gray-500 rounded-md lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-themeColor"
                 aria-expanded="false" id="menu-toggle">
-                <span class="sr-only">Open menu</span>
+                <span class="sr-only">Abrir menu</span>
                 <ion-icon name="menu-outline" class="w-6 h-6"></ion-icon>
             </button>
         </nav>
@@ -81,6 +83,9 @@
                     <div class="relative mb-4">
                         <input type="text" placeholder="Pesquisar contatos"
                             class="w-full p-2 text-sm text-gray-600 border rounded-md focus:ring focus:ring-themeColorLight">
+                        <button type="submit" class="ml-2 text-gray-600">
+                            <ion-icon name="search-outline" class="text-gray-600 hover:text-themeColorLight"></ion-icon>
+                        </button>
                     </div>
                     <a href="/contacts/create"
                         class="block mb-2 font-semibold text-themeColor hover:text-themeColorLight">Adicionar Novo
@@ -103,7 +108,6 @@
     @yield('scripts')
 
     <script>
-        // Toggle flyout menu
         const menuToggle = document.getElementById('menu-toggle');
         const menuFlyout = document.getElementById('menu-flyout');
 
