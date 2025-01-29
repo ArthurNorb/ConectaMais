@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Livewire;
 
 use Livewire\Component;
 
-class SocialMediaFields extends Component
+class RedeSocial extends Component
 {
     public $socialMedias = [
         ['nome' => '', 'link' => ''],
@@ -17,6 +17,6 @@ class SocialMediaFields extends Component
 
     public function render()
     {
-        return view('livewire.social-media-fields');
+        return view('livewire.rede-social');
     }
 }

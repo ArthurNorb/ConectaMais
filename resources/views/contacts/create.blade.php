@@ -127,7 +127,7 @@
                             </div>
                         </div>
                         <h4 class="py-2 mr-auto text-sm font-bold text-themeColor">Redes Sociais</h4>
-                        {{-- @livewire('social-media-fields') --}}
+                        <livewire:rede-social />
 
                         <p class="my-3 text-xs text-right text-red-500">Campos obrigatórios marcados com asterisco
                             <abbr title="Required field">*</abbr>

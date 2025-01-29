@@ -21,6 +21,9 @@
 
     {{-- Vite --}}
     @vite('resources/css/app.css', 'resources/js/app.js')
+
+    @stack('style')
+    @livewireStyles
 </head>
 
 <body>
@@ -105,6 +108,7 @@
         @yield('content')
 
         @livewireScripts
+        @stack('scripts')
     </main>
 
     @yield('scripts')
