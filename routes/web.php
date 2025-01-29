@@ -17,7 +17,8 @@ Route::middleware([
     })->name('dashboard');
 });
 
- Route::get('/contacts/create', [ContatoController::class, 'create'])->middleware('auth');
+Route::get('/contacts/create', [ContatoController::class, 'create'])->middleware('auth');
+Route::post('/contacts', [ContatoController::class, 'store']);
 
 Route::post('/login', [AuthenticatedSessionController::class, 'store']);
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout')->middleware('auth');

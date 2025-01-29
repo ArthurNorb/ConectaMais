@@ -27,8 +27,13 @@
                                         <p class="mt-1 text-sm truncate text-themeColorLight">{{ $contato->email }}</p>
                                     @endif
                                 </div>
-                                <img class="flex-shrink-0 w-10 h-10 rounded-full" src="/img/no-profile-pic-icon.jpg"
-                                    alt="{{ $contato->nome_pessoa }}">
+                                @if ($contato->avatar)
+                                    <img class="flex-shrink-0 w-10 h-10 rounded-full" src="{{ $contato->avatar }}"
+                                        alt="{{ $contato->nome_pessoa }}">
+                                @else
+                                    <img class="flex-shrink-0 w-10 h-10 rounded-full" src="/img/no-profile-pic-icon.jpg"
+                                        alt="{{ $contato->nome_pessoa }}">
+                                @endif
                             </div>
                         </li>
                     @empty
