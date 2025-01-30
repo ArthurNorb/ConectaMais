@@ -17,7 +17,7 @@ class ContatoController extends Controller
         $contatos = Pessoa::leftJoin('enderecos', 'pessoas.enderecos_id', 'enderecos.id')
             ->leftJoin('estados', 'enderecos.estados_id', 'estados.id')
             ->leftJoin('redes_sociais', 'pessoas.id', 'redes_sociais.pessoas_id')
-            ->select('pessoas.nome as nome_pessoa', 'pessoas.celular', 'estados.nome as nome_estado', 'pessoas.sobrenome', 'pessoas.apelido', 'pessoas.email', 'pessoas.avatar', 'pessoas.birthday')
+            ->select('pessoas.nome as nome_pessoa', 'pessoas.celular', 'estados.nome as nome_estado', 'pessoas.sobrenome', 'pessoas.apelido', 'pessoas.email', 'pessoas.avatar', 'pessoas.birthday', 'pessoas.id as pessoa_id')
             ->get();
 
         return view('welcome', compact('contatos'));
@@ -38,7 +38,6 @@ class ContatoController extends Controller
     public function store(Request $request)
     {
         $pessoa = new Pessoa;
-        $endereco = new Endereco;
 
         // upload avatar do contato
         if ($request->hasFile('avatar') && $request->file('avatar')->isValid()) {
@@ -60,13 +59,17 @@ class ContatoController extends Controller
         $pessoa->save();
 
         // upload endereço
+
         if ($request->input('rua')) {
+            $endereco = new Endereco;
             $endereco->rua = $request->input('rua');
             $endereco->numero = $request->input('numero');
             $endereco->cidade = $request->input('cidade');
             $endereco->cep = $request->input('cep');
             $endereco->estados_id = $request->input('uf');
             $endereco->save();
+            $pessoa->enderecos_id = $endereco->id; 
+            $pessoa->save();
         }
 
         return redirect('/');
@@ -75,11 +78,10 @@ class ContatoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        //
+    public function show(Pessoa $contato) {
+        return view('contacts.show', compact('contato'));
     }
-
+    
     /**
      * Show the form for editing the specified resource.
      */

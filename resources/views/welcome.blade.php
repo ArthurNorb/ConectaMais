@@ -9,32 +9,34 @@
                 <ul role="list" class="grid grid-cols-1 gap-6 mt-12 sm:grid-cols-2 lg:grid-cols-2">
                     @forelse ($contatos as $contato)
                         <li class="col-span-1 bg-white divide-y divide-gray-200 rounded-lg shadow">
-                            <div class="flex items-center justify-between w-full p-6 space-x-6">
-                                <div class="flex-1 truncate">
-                                    <div class="flex items-center space-x-3">
-                                        @if ($contato->apelido)
-                                            <h3 class="text-sm font-medium truncate text-themeColor">
-                                                {{ $contato->apelido }}
-                                            </h3>
-                                        @else
-                                            <h3 class="text-sm font-medium truncate text-themeColor">
-                                                {{ $contato->nome_pessoa }}{{ $contato->sobrenome ? ' ' . $contato->sobrenome : '' }}
-                                            </h3>
+                            <a href="{{ route('contatos.show', $contato->pessoa_id) }}">
+                                <div class="flex items-center justify-between w-full p-6 space-x-6">
+                                    <div class="flex-1 truncate">
+                                        <div class="flex items-center space-x-3">
+                                            @if ($contato->apelido)
+                                                <h3 class="text-sm font-medium truncate text-themeColor">
+                                                    {{ $contato->apelido }}
+                                                </h3>
+                                            @else
+                                                <h3 class="text-sm font-medium truncate text-themeColor">
+                                                    {{ $contato->nome_pessoa }}{{ $contato->sobrenome ? ' ' . $contato->sobrenome : '' }}
+                                                </h3>
+                                            @endif
+                                        </div>
+                                        <p class="mt-1 text-sm truncate text-themeColorLight">{{ $contato->celular }}</p>
+                                        @if ($contato->email)
+                                            <p class="mt-1 text-sm truncate text-themeColorLight">{{ $contato->email }}</p>
                                         @endif
                                     </div>
-                                    <p class="mt-1 text-sm truncate text-themeColorLight">{{ $contato->celular }}</p>
-                                    @if ($contato->email)
-                                        <p class="mt-1 text-sm truncate text-themeColorLight">{{ $contato->email }}</p>
+                                    @if ($contato->avatar)
+                                        <img class="flex-shrink-0 w-10 h-10 rounded-full" src="{{ asset($contato->avatar) }}"
+                                            alt="{{ $contato->nome_pessoa }}">
+                                    @else
+                                        <img class="flex-shrink-0 w-10 h-10 rounded-full"
+                                            src="{{ asset('img/no-profile-pic-icon.jpg') }}" alt="{{ $contato->nome_pessoa }}">
                                     @endif
                                 </div>
-                                @if ($contato->avatar)
-                                    <img class="flex-shrink-0 w-10 h-10 rounded-full" src="{{ asset($contato->avatar) }}"
-                                        alt="{{ $contato->nome_pessoa }}">
-                                @else
-                                    <img class="flex-shrink-0 w-10 h-10 rounded-full"
-                                        src="{{ asset('img/no-profile-pic-icon.jpg') }}" alt="{{ $contato->nome_pessoa }}">
-                                @endif
-                            </div>
+                            </a>
                         </li>
                     @empty
                         <div class="items-center justify-center">
