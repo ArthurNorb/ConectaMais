@@ -40,7 +40,16 @@ class ContatoController extends Controller
         $pessoa = new Pessoa;
         $endereco = new Endereco;
 
-        $pessoa->avatar = $request->input('avatar');
+        // upload avatar do contato
+        if ($request->hasFile('avatar') && $request->file('avatar')->isValid()) {
+            $requestImage = $request->file('avatar'); // Corrigido aqui!
+            $extension = $requestImage->extension();
+            $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
+            $requestImage->move(public_path('img/avatares'), $imageName);
+            $pessoa->avatar = $imageName;
+        }        
+
+        // upload contato
         $pessoa->nome = $request->input('nome');
         $pessoa->sobrenome = $request->input('sobrenome');
         $pessoa->apelido = $request->input('apelido');
@@ -50,6 +59,7 @@ class ContatoController extends Controller
         $pessoa->fixo = $request->input('fixo');
         $pessoa->save();
 
+        // upload endereço
         if ($request->input('rua')) {
             $endereco->rua = $request->input('rua');
             $endereco->numero = $request->input('numero');

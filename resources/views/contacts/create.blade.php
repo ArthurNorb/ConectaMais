@@ -12,7 +12,7 @@
                         <h2 class="mr-auto text-lg font-semibold text-themeColor">Adicionar Novo Contato</h2>
                         <div class="w-full mt-3 sm:w-auto sm:ml-auto sm:mt-0"></div>
                     </div>
-                    <form action="/contacts" method="post">
+                    <form action="/contacts" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="mt-2">
                             <div class="form">
