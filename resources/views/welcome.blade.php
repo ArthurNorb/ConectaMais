@@ -28,11 +28,11 @@
                                     @endif
                                 </div>
                                 @if ($contato->avatar)
-                                    <img class="flex-shrink-0 w-10 h-10 rounded-full" src="{{ $contato->avatar }}"
+                                    <img class="flex-shrink-0 w-10 h-10 rounded-full" src="{{ asset($contato->avatar) }}"
                                         alt="{{ $contato->nome_pessoa }}">
                                 @else
-                                    <img class="flex-shrink-0 w-10 h-10 rounded-full" src="/img/no-profile-pic-icon.jpg"
-                                        alt="{{ $contato->nome_pessoa }}">
+                                    <img class="flex-shrink-0 w-10 h-10 rounded-full"
+                                        src="{{ asset('img/no-profile-pic-icon.jpg') }}" alt="{{ $contato->nome_pessoa }}">
                                 @endif
                             </div>
                         </li>

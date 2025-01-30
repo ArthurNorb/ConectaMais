@@ -46,7 +46,7 @@ class ContatoController extends Controller
             $extension = $requestImage->extension();
             $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
             $requestImage->move(public_path('img/avatares'), $imageName);
-            $pessoa->avatar = $imageName;
+            $pessoa->avatar = 'img/avatares/' . $imageName;
         }        
 
         // upload contato
