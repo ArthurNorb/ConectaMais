@@ -14,23 +14,30 @@
                                     <div class="flex-1 truncate">
                                         <div class="flex items-center space-x-3">
                                             @if ($contato->apelido)
-                                                <h3 class="text-sm font-medium truncate text-themeColor">
+                                                <h3 class="text-lg font-medium truncate text-themeColor">
                                                     <b>{{ $contato->apelido }}</b>
                                                 </h3>
                                             @else
-                                                <h3 class="text-sm font-medium truncate text-themeColor">
+                                                <h3 class="text-lg font-medium truncate text-themeColor">
                                                     <b>{{ $contato->nome_pessoa }} {{ $contato->sobrenome }}</b>
                                                 </h3>
                                             @endif
                                         </div>
-                                        <p class="mt-1 text-sm truncate text-themeColorLight"><b>Celular:</b> {{ $contato->celular }}
+                                        @if ($contato->birthday)
+                                            <p class="mt-1 text-sm truncate text-themeColorLight"><b>Data de Nascimento:</b>
+                                                {{ date('d/m/Y', strtotime($contato->birthday)) }}</p>
+                                        @endif
+                                        <p class="mt-1 text-sm truncate text-themeColorLight"><b>Celular:</b>
+                                            {{ $contato->celular }}
                                         </p>
                                         @if ($contato->fixo)
-                                            <p class="mt-1 text-sm truncate text-themeColorLight"><b>Fixo</b> {{ $contato->fixo }}
+                                            <p class="mt-1 text-sm truncate text-themeColorLight"><b>Fixo</b>
+                                                {{ $contato->fixo }}
                                             </p>
                                         @endif
                                         @if ($contato->email)
-                                            <p class="mt-1 text-sm truncate text-themeColorLight"><b>E-mail:</b> {{ $contato->email }}
+                                            <p class="mt-1 text-sm truncate text-themeColorLight"><b>E-mail:</b>
+                                                {{ $contato->email }}
                                             </p>
                                         @endif
                                         @if ($contato->rua)

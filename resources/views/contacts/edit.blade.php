@@ -26,6 +26,9 @@
                     src="{{ $contato->avatar ? asset($contato->avatar) : asset('img/no-profile-pic-icon.jpg') }}"
                     alt="{{ $contato->nome_pessoa }}">
                 <div class="mt-4 text-sm sm:text-base sm:mt-0 sm:ml-8">
+                    @if ($contato->birthday)
+                        <p class="mt-1 text-themeColor"><b>Data de Nascimento:</b> {{ date('d/m/Y', strtotime($contato->birthday)) }}</p>
+                    @endif
                     <p class="mt-1 text-themeColor"><b>Celular:</b> {{ $contato->celular }}</p>
                     @if ($contato->fixo)
                         <p class="mt-1 text-themeColor"><b>Fixo:</b> {{ $contato->fixo }}</p>
@@ -41,10 +44,12 @@
                     @endif
                 </div>
                 <div class="flex flex-row items-center justify-center gap-2 mt-4 ml-auto sm:flex-col sm:mt-0">
-                    <button class="px-4 py-2 text-2xl font-semibold bg-white border-2 rounded-xl border-themeColor text-themeColor hover:text-white hover:bg-themeColor hover:border-white gap-x-1">
+                    <button
+                        class="px-4 py-2 text-2xl font-semibold bg-white border-2 rounded-xl border-themeColor text-themeColor hover:text-white hover:bg-themeColor hover:border-white gap-x-1">
                         <ion-icon name="create-outline"></ion-icon>
                     </button>
-                    <button class="px-4 py-2 text-2xl font-semibold bg-white border-2 rounded-xl border-themeColor text-themeColor hover:text-white hover:bg-themeColor hover:border-white gap-x-1">
+                    <button
+                        class="px-4 py-2 text-2xl font-semibold bg-white border-2 rounded-xl border-themeColor text-themeColor hover:text-white hover:bg-themeColor hover:border-white gap-x-1">
                         <ion-icon name="trash-outline"></ion-icon>
                     </button>
                 </div>
