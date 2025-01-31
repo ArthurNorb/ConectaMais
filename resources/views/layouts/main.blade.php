@@ -34,7 +34,7 @@
     @livewireStyles
 </head>
 
-<body>
+<body class='bg-slate-100'>
     <header class="bg-white">
         <nav class="flex items-center justify-between p-3 mx-auto max-w-7xl lg:px-8" aria-label="Global">
             <div class="flex items-center lg:flex-1">

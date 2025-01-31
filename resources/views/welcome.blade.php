@@ -3,7 +3,7 @@
 @section('title', 'Conecta+')
 
 @section('content')
-    <div class="relative flex flex-col items-center min-h-screen bg-slate-100">
+    <div class="relative flex flex-col items-center bg-slate-100">
         <div class="relative w-full max-w-5xl px-4 sm:px-6 lg:px-8">
             @auth
                 <ul role="list" class="grid grid-cols-1 gap-6 mt-12">
@@ -15,26 +15,26 @@
                                         <div class="flex items-center space-x-3">
                                             @if ($contato->apelido)
                                                 <h3 class="text-sm font-medium truncate text-themeColor">
-                                                    {{ $contato->apelido }}
+                                                    <b>{{ $contato->apelido }}</b>
                                                 </h3>
                                             @else
                                                 <h3 class="text-sm font-medium truncate text-themeColor">
-                                                    {{ $contato->nome_pessoa }} {{ $contato->sobrenome }}
+                                                    <b>{{ $contato->nome_pessoa }} {{ $contato->sobrenome }}</b>
                                                 </h3>
                                             @endif
                                         </div>
-                                        <p class="mt-1 text-sm truncate text-themeColorLight">Celular - {{ $contato->celular }}
+                                        <p class="mt-1 text-sm truncate text-themeColorLight"><b>Celular:</b> {{ $contato->celular }}
                                         </p>
                                         @if ($contato->fixo)
-                                            <p class="mt-1 text-sm truncate text-themeColorLight">Fixo - {{ $contato->fixo }}
+                                            <p class="mt-1 text-sm truncate text-themeColorLight"><b>Fixo</b> {{ $contato->fixo }}
                                             </p>
                                         @endif
                                         @if ($contato->email)
-                                            <p class="mt-1 text-sm truncate text-themeColorLight">Email - {{ $contato->email }}
+                                            <p class="mt-1 text-sm truncate text-themeColorLight"><b>E-mail:</b> {{ $contato->email }}
                                             </p>
                                         @endif
                                         @if ($contato->rua)
-                                            <p class="mt-1 text-sm truncate text-themeColorLight">Endereço -
+                                            <p class="mt-1 text-sm truncate text-themeColorLight"><b>Endereço:</b>
                                                 {{ $contato->rua }}, {{ $contato->numero }}, {{ $contato->cidade }},
                                                 {{ $contato->nome_estado }} - {{ $contato->cep }}</p>
                                         @endif
