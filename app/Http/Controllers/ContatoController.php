@@ -20,13 +20,19 @@ class ContatoController extends Controller
             ->select(
                 'pessoas.nome as nome_pessoa',
                 'pessoas.celular',
+                'pessoas.fixo',
                 'estados.nome as nome_estado',
                 'pessoas.sobrenome',
                 'pessoas.apelido',
                 'pessoas.email',
                 'pessoas.avatar',
                 'pessoas.birthday',
-                'pessoas.id as pessoa_id'
+                'pessoas.id as pessoa_id',
+                'enderecos.rua',
+                'enderecos.numero',
+                'enderecos.cidade',
+                'estados.sigla',
+                'enderecos.cep',
             )
             ->paginate(10);
         return view('welcome', compact('contatos'));
