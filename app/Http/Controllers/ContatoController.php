@@ -17,9 +17,18 @@ class ContatoController extends Controller
         $contatos = Pessoa::leftJoin('enderecos', 'pessoas.enderecos_id', 'enderecos.id')
             ->leftJoin('estados', 'enderecos.estados_id', 'estados.id')
             ->leftJoin('redes_sociais', 'pessoas.id', 'redes_sociais.pessoas_id')
-            ->select('pessoas.nome as nome_pessoa', 'pessoas.celular', 'estados.nome as nome_estado', 'pessoas.sobrenome', 'pessoas.apelido', 'pessoas.email', 'pessoas.avatar', 'pessoas.birthday', 'pessoas.id as pessoa_id')
-            ->get();
-
+            ->select(
+                'pessoas.nome as nome_pessoa',
+                'pessoas.celular',
+                'estados.nome as nome_estado',
+                'pessoas.sobrenome',
+                'pessoas.apelido',
+                'pessoas.email',
+                'pessoas.avatar',
+                'pessoas.birthday',
+                'pessoas.id as pessoa_id'
+            )
+            ->paginate(10);
         return view('welcome', compact('contatos'));
     }
 
@@ -46,7 +55,7 @@ class ContatoController extends Controller
             $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
             $requestImage->move(public_path('img/avatares'), $imageName);
             $pessoa->avatar = 'img/avatares/' . $imageName;
-        }        
+        }
 
         // upload contato
         $pessoa->nome = $request->input('nome');
@@ -68,7 +77,7 @@ class ContatoController extends Controller
             $endereco->cep = $request->input('cep');
             $endereco->estados_id = $request->input('uf');
             $endereco->save();
-            $pessoa->enderecos_id = $endereco->id; 
+            $pessoa->enderecos_id = $endereco->id;
             $pessoa->save();
         }
 
@@ -78,10 +87,11 @@ class ContatoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Pessoa $contato) {
+    public function show(Pessoa $contato)
+    {
         return view('contacts.show', compact('contato'));
     }
-    
+
     /**
      * Show the form for editing the specified resource.
      */
