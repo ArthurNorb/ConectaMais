@@ -22,7 +22,7 @@
                 @endif
             </div>
             <div class="flex flex-col sm:flex-row sm:gap-8 sm:items-center">
-                <img class="w-40 border-4 sm:w-52 rounded-xl border-themeColor"
+                <img class="w-40 border-4 sm:w-44 rounded-xl border-themeColor"
                     src="{{ $contato->avatar ? asset($contato->avatar) : asset('img/no-profile-pic-icon.jpg') }}"
                     alt="{{ $contato->nome_pessoa }}">
                 <div class="mt-4 text-sm sm:text-base sm:mt-0 sm:ml-8">
