@@ -93,9 +93,9 @@ class ContatoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Pessoa $contato)
+    public function show()
     {
-        return view('contacts.show', compact('contato'));
+        //
     }
 
     /**
@@ -103,8 +103,32 @@ class ContatoController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $contato = Pessoa::leftJoin('enderecos', 'pessoas.enderecos_id', 'enderecos.id')
+            ->leftJoin('estados', 'enderecos.estados_id', 'estados.id')
+            ->leftJoin('redes_sociais', 'pessoas.id', 'redes_sociais.pessoas_id')
+            ->select(
+                'pessoas.id as pessoa_id',
+                'pessoas.nome as nome_pessoa',
+                'pessoas.sobrenome',
+                'pessoas.apelido',
+                'pessoas.email',
+                'pessoas.avatar',
+                'pessoas.birthday',
+                'pessoas.celular',
+                'pessoas.fixo',
+                'enderecos.rua',
+                'enderecos.numero',
+                'enderecos.cidade',
+                'estados.sigla',
+                'enderecos.cep'
+            )
+            ->where('pessoas.id', $id)
+            ->firstOrFail();
+
+        return view('contacts.edit', compact('contato'));
     }
+
+
 
     /**
      * Update the specified resource in storage.

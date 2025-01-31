@@ -9,7 +9,7 @@
                 <ul role="list" class="grid grid-cols-1 gap-6 mt-12">
                     @forelse ($contatos as $contato)
                         <li class="col-span-1 bg-white divide-y divide-gray-200 rounded-lg shadow">
-                            <a href="{{ route('contatos.show', $contato->pessoa_id) }}">
+                            <a href="{{ route('contatos.edit', $contato->pessoa_id) }}">
                                 <div class="flex items-center justify-between w-full p-6 space-x-6">
                                     <div class="flex-1 truncate">
                                         <div class="flex items-center space-x-3">
