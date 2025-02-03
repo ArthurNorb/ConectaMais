@@ -50,7 +50,7 @@
                         <ion-icon name="create-outline"></ion-icon>
                     </button>
                     <button
-                        class="px-4 py-2 text-2xl font-semibold bg-white border-2 rounded-xl border-themeColor text-themeColor hover:text-white hover:bg-themeColor hover:border-white gap-x-1">
+                        class="px-4 py-2 text-2xl font-semibold bg-white border-2 rounded-xl border-themeColor text-themeColor hover:text-white hover:bg-red-600 hover:border-white gap-x-1">
                         <ion-icon name="trash-outline"></ion-icon>
                     </button>
                 </div>

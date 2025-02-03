@@ -37,6 +37,7 @@ class ContatoController extends Controller
                 'enderecos.cep'
             );
     
+            // dd($search);
         if ($search) {
             $query->where('pessoas.nome', 'like', "%{$search}%")
                   ->orWhere('pessoas.sobrenome', 'like', "%{$search}%")

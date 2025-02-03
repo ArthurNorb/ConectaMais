@@ -11,7 +11,7 @@
                         Exibindo resultados para: <b class="text-themeColor">"{{ $search }}"</b>
                     </p>
                 @endif
-                <ul role="list" class="grid grid-cols-1 gap-6 mt-12">
+                <ul role="list" class="grid grid-cols-1 gap-6 mt-12 sm:grid-cols-2">
                     @forelse ($contatos as $contato)
                         <li class="col-span-1 bg-white divide-y divide-gray-200 rounded-lg shadow">
                             <a href="{{ route('contatos.edit', $contato->pessoa_id) }}">
@@ -57,12 +57,11 @@
                                 </div>
                             </a>
                         </li>
-                    @empty
-                        <div class="items-center justify-center">
-                            <div class="w-full py-6 text-center">
+                        @empty
+                        <div class="flex justify-center w-full">
+                            <div class="flex flex-col items-center max-w-lg text-center">
                                 <h1 class="text-3xl font-semibold text-themeColor">Você ainda não possui nenhum contato</h1>
-                                <p class="mt-4 text-lg text-gray-500">Clique no botão abaixo para adicionar seu primeiro contato
-                                </p>
+                                <p class="mt-4 text-lg text-gray-500">Clique no botão abaixo para adicionar seu primeiro contato</p>
                                 <a href="/contacts/create"
                                     class="inline-block px-6 py-3 mt-6 text-sm font-semibold rounded-full bg-themeColor text-slate-100 hover:bg-themeColorLight">
                                     Adicionar Novo Contato
@@ -70,6 +69,7 @@
                             </div>
                         </div>
                     @endforelse
+
                 </ul>
                 <div class="flex justify-center my-6">
                     @if ($contatos->hasPages())

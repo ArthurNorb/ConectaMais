@@ -95,15 +95,16 @@
 
                 @auth
                     <div class="relative mb-4">
-                        <form action="{{ route('contatos.index') }}" method="GET">
+                        <form action="{{ route('contatos.index') }}" method="GET" class="flex items-center">
                             <input type="text" name="search" placeholder="Pesquisar contatos"
                                 value="{{ request('search') }}"
                                 class="w-full p-2 text-sm text-gray-600 border rounded-md focus:ring focus:ring-themeColorLight">
-                            <button type="submit" class="ml-2 text-gray-600">
+                            <button type="submit" class="p-2 ml-2 text-gray-600 rounded-md hover:bg-gray-200">
                                 <ion-icon name="search-outline" class="text-gray-600 hover:text-themeColorLight"></ion-icon>
                             </button>
                         </form>
                     </div>
+
                     <a href="/contacts/create"
                         class="block mb-2 font-semibold text-themeColor hover:text-themeColorLight">Adicionar Novo
                         Contato</a>
