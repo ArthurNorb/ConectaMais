@@ -14,7 +14,9 @@ class ContatoController extends Controller
      */
     public function index()
     {
-        $contatos = Pessoa::leftJoin('enderecos', 'pessoas.enderecos_id', 'enderecos.id')
+        $search = request('search');
+    
+        $query = Pessoa::leftJoin('enderecos', 'pessoas.enderecos_id', 'enderecos.id')
             ->leftJoin('estados', 'enderecos.estados_id', 'estados.id')
             ->leftJoin('redes_sociais', 'pessoas.id', 'redes_sociais.pessoas_id')
             ->select(
@@ -32,11 +34,22 @@ class ContatoController extends Controller
                 'enderecos.numero',
                 'enderecos.cidade',
                 'estados.sigla',
-                'enderecos.cep',
-            )
-            ->paginate(10);
-        return view('welcome', compact('contatos'));
+                'enderecos.cep'
+            );
+    
+        if ($search) {
+            $query->where('pessoas.nome', 'like', "%{$search}%")
+                  ->orWhere('pessoas.sobrenome', 'like', "%{$search}%")
+                  ->orWhere('pessoas.apelido', 'like', "%{$search}%")
+                  ->orWhere('pessoas.email', 'like', "%{$search}%")
+                  ->orWhere('pessoas.celular', 'like', "%{$search}%");
+        }
+    
+        $contatos = $query->paginate(10);
+    
+        return view('welcome', compact('contatos', 'search'));
     }
+    
 
     /**
      * Show the form for creating a new resource.

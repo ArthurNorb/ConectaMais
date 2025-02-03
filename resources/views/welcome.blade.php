@@ -6,6 +6,11 @@
     <div class="relative flex flex-col items-center bg-slate-100">
         <div class="relative w-full max-w-5xl px-4 sm:px-6 lg:px-8">
             @auth
+                @if ($search)
+                    <p class="mt-5 text-sm text-themeColorLight">
+                        Exibindo resultados para: <b class="text-themeColor">"{{ $search }}"</b>
+                    </p>
+                @endif
                 <ul role="list" class="grid grid-cols-1 gap-6 mt-12">
                     @forelse ($contatos as $contato)
                         <li class="col-span-1 bg-white divide-y divide-gray-200 rounded-lg shadow">
@@ -46,7 +51,7 @@
                                                 {{ $contato->nome_estado }} - {{ $contato->cep }}</p>
                                         @endif
                                     </div>
-                                    <img class="flex-shrink-0 w-16 h-16 rounded-full"
+                                    <img class="flex-shrink-0 object-cover w-16 h-16 rounded-full"
                                         src="{{ $contato->avatar ? asset($contato->avatar) : asset('img/no-profile-pic-icon.jpg') }}"
                                         alt="{{ $contato->nome_pessoa }}">
                                 </div>

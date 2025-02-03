@@ -46,11 +46,14 @@
 
             @auth
                 <div class="hidden lg:flex lg:items-center">
-                    <input type="text" placeholder="Pesquisar contatos"
-                        class="py-2 text-sm text-gray-600 border rounded-md w-80 hover:text-themeColorLight">
-                    <button type="submit" class="ml-2 text-gray-600">
-                        <ion-icon name="search-outline" class="text-gray-600 hover:text-themeColorLight"></ion-icon>
-                    </button>
+                    <form action="{{ route('contatos.index') }}" method="GET">
+                        <input type="text" name="search" placeholder="Pesquisar contatos"
+                            value="{{ request('search') }}"
+                            class="py-2 text-sm text-gray-600 border rounded-md w-80 hover:text-themeColorLight">
+                        <button type="submit" class="ml-2 text-gray-600">
+                            <ion-icon name="search-outline" class="text-gray-600 hover:text-themeColorLight"></ion-icon>
+                        </button>
+                    </form>
                 </div>
             @endauth
 
@@ -92,11 +95,14 @@
 
                 @auth
                     <div class="relative mb-4">
-                        <input type="text" placeholder="Pesquisar contatos"
-                            class="w-full p-2 text-sm text-gray-600 border rounded-md focus:ring focus:ring-themeColorLight">
-                        <button type="submit" class="ml-2 text-gray-600">
-                            <ion-icon name="search-outline" class="text-gray-600 hover:text-themeColorLight"></ion-icon>
-                        </button>
+                        <form action="{{ route('contatos.index') }}" method="GET">
+                            <input type="text" name="search" placeholder="Pesquisar contatos"
+                                value="{{ request('search') }}"
+                                class="w-full p-2 text-sm text-gray-600 border rounded-md focus:ring focus:ring-themeColorLight">
+                            <button type="submit" class="ml-2 text-gray-600">
+                                <ion-icon name="search-outline" class="text-gray-600 hover:text-themeColorLight"></ion-icon>
+                            </button>
+                        </form>
                     </div>
                     <a href="/contacts/create"
                         class="block mb-2 font-semibold text-themeColor hover:text-themeColorLight">Adicionar Novo
