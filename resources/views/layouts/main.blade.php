@@ -23,11 +23,6 @@
     @vite('resources/css/app.css', 'resources/js/app.js')
 
     {{-- alpine --}}
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js"></script>
-    <!-- Alpine Plugins -->
-    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/mask@3.x.x/dist/cdn.min.js"></script>
-
-    <!-- Alpine Core -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     @stack('style')
@@ -45,16 +40,20 @@
             </div>
 
             @auth
-                <div class="hidden lg:flex lg:items-center">
-                    <form action="{{ route('contatos.index') }}" method="GET">
-                        <input type="text" name="search" placeholder="Pesquisar contatos"
+                <div class="hidden lg:flex lg:flex-col lg:items-start">
+                    <form action="{{ route('contatos.index') }}" method="GET" onsubmit="return validateSearch(event)">
+                        <input type="text" id="searchInputDesktop" name="search" placeholder="Pesquisar contatos"
                             value="{{ request('search') }}"
                             class="py-2 text-sm text-gray-600 border rounded-md w-80 hover:text-themeColorLight">
                         <button type="submit" class="ml-2 text-gray-600">
                             <ion-icon name="search-outline" class="text-gray-600 hover:text-themeColorLight"></ion-icon>
                         </button>
                     </form>
+                    <p id="searchErrorDesktop" class="hidden mt-1 text-sm text-red-500">
+                        Digite pelo menos 3 caracteres para pesquisar.
+                    </p>
                 </div>
+
             @endauth
 
             <div class="hidden lg:flex lg:flex-1 lg:justify-end">
@@ -94,16 +93,20 @@
                 @endguest
 
                 @auth
-                    <div class="relative mb-4">
-                        <form action="{{ route('contatos.index') }}" method="GET" class="flex items-center">
-                            <input type="text" name="search" placeholder="Pesquisar contatos"
+                    <div class="relative mb-4 lg:hidden">
+                        <form action="{{ route('contatos.index') }}" method="GET" class="flex items-center"
+                            onsubmit="return validateSearch(event)">
+                            <input type="text" id="searchInputMobile" name="search" placeholder="Pesquisar contatos"
                                 value="{{ request('search') }}"
                                 class="w-full p-2 text-sm text-gray-600 border rounded-md focus:ring focus:ring-themeColorLight">
                             <button type="submit" class="p-2 ml-2 text-gray-600 rounded-md hover:bg-gray-200">
                                 <ion-icon name="search-outline" class="text-gray-600 hover:text-themeColorLight"></ion-icon>
                             </button>
                         </form>
+                        <p id="searchErrorMobile" class="hidden mt-1 text-sm text-red-500">Digite pelo menos 3 caracteres
+                            para pesquisar.</p>
                     </div>
+
 
                     <a href="/contacts/create"
                         class="block mb-2 font-semibold text-themeColor hover:text-themeColorLight">Adicionar Novo
@@ -135,6 +138,28 @@
         menuToggle.addEventListener('click', () => {
             menuFlyout.classList.toggle('hidden');
         });
+
+        function validateSearch(event) {
+            let searchInput, errorMessage;
+
+            if (window.innerWidth < 1024) {
+                searchInput = document.getElementById('searchInputMobile');
+                errorMessage = document.getElementById('searchErrorMobile');
+            } else {
+                searchInput = document.getElementById('searchInputDesktop');
+                errorMessage = document.getElementById('searchErrorDesktop');
+            }
+
+            let searchValue = searchInput.value.trim();
+
+            if (searchValue.length < 3) {
+                errorMessage.classList.remove('hidden');
+                return false;
+            } else {
+                errorMessage.classList.add('hidden');
+                return true;
+            }
+        }
     </script>
 </body>
 

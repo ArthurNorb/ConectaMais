@@ -25,7 +25,8 @@
                                                 src="/img/no-profile-pic-icon.jpg" alt="Avatar Upload">
                                         </div>
                                         <label class="cursor-pointer">
-                                            <input type="file" accept="image/*" class="hidden" id="avatar" name='avatar'>
+                                            <input type="file" accept="image/*" class="hidden" id="avatar"
+                                                name='avatar'>
                                             <button type="button" onclick="document.getElementById('avatar').click()"
                                                 class="px-4 py-2 text-sm text-white border-2 border-white rounded-full bg-themeColor hover:bg-white hover:text-themeColor hover:border-themeColor">
                                                 Procurar
@@ -107,18 +108,22 @@
                             </div>
                             <h4 class="py-2 mr-auto text-sm font-bold text-themeColor">Contatos</h4>
                             <div class="flex-row w-full text-xs md:flex md:space-x-4">
-                                <div class="w-full mb-3 space-y-2 text-xs">
-                                    <label class="py-2 font-semibold text-themeColor">Celular <abbr
-                                            title="required">*</abbr></label>
-                                    <input maxlength="18" x-mask:function="$input.length <= 14 ? '(99) 9999-9999' : '(99) 99999-9999'" placeholder="(99) 99999-9999"
-                                        class="block w-full h-10 px-4 border rounded-lg appearance-none bg-grey-lighter text-grey-darker border-grey-lighter"
-                                        required="required" type="text" id='celular' name='celular'>
+                                <div class="w-full mb-3 space-y-2 text-xs" x-data>
+                                    <label for="celular" class="py-2 font-semibold text-themeColor">
+                                        Celular <abbr title="required">*</abbr>
+                                    </label>
+                                    <input id="celular" name="celular" type="text" required maxlength="15"
+                                        placeholder="(99) 99999-9999"
+                                        x-mask:dynamic="$input.length <= 14 ? '(99) 9999-9999' : '(99) 99999-9999'"
+                                        class="block w-full h-10 px-4 border rounded-lg appearance-none bg-grey-lighter text-grey-darker border-grey-lighter">
                                 </div>
-                                <div class="w-full mb-3 space-y-2 text-xs">
-                                    <label class="py-2 font-semibold text-themeColor">Telefone fixo </label>
-                                    <input placeholder="(99)1234-5678"
-                                        class="block w-full h-10 px-4 border rounded-lg appearance-none bg-grey-lighter text-grey-darker border-grey-lighter"
-                                        type="text" id='fixo' name='fixo'>
+                                <div class="w-full mb-3 space-y-2 text-xs" x-data>
+                                    <label for="fixo" class="py-2 font-semibold text-themeColor">
+                                        Telefone fixo
+                                    </label>
+                                    <input id="fixo" name="fixo" type="text" placeholder="(99) 1234-5678"
+                                        x-mask="'(99) 9999-9999'"
+                                        class="block w-full h-10 px-4 border rounded-lg appearance-none bg-grey-lighter text-grey-darker border-grey-lighter">
                                 </div>
                             </div>
                             <div class="flex-row w-full text-xs md:flex md:space-x-4">

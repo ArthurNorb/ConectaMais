@@ -55,7 +55,7 @@
                     </button>
                 </div>
             </div>
-            <livewire:editar-contato :contato="$contato" />
+            <livewire:editar-contato :contato="$contato" />              
         </div>
     </div>
 @endsection
