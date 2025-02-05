@@ -3,26 +3,18 @@
 namespace App\Livewire;
 
 use Livewire\Component;
+use App\Models\Estado; 
 
 class EditarContato extends Component
 {
     public $contato;
-    public $showEditComponent = false;
-
-    protected $listeners = ['showEditComponent'];
-
-    public function showEditComponent()
+    public function mount($contato)
     {
-        $this->showEditComponent = true;
+        $this->contato = $contato;
     }
-
     public function render()
     {
-        return view('livewire.editar-contato', [
-            'contato' => $this->contato,
-            'showEditComponent' => $this->showEditComponent
-        ]);
+        $estados = Estado::all();
+        return view('livewire.editar-contato', compact('estados'));
     }
 }
-
-

@@ -35,8 +35,6 @@
                                     </div>
                                 </div>
                             </div>
-
-
                             <div class="flex-row w-full text-xs md:flex md:space-x-4">
                                 <div class="w-full mb-3 space-y-2 text-xs">
                                     <label class="py-2 font-semibold text-themeColor">Nome <abbr

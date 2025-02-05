@@ -23,8 +23,17 @@
     @vite('resources/css/app.css', 'resources/js/app.js')
 
     @stack('style')
+
+    {{-- CSS para x-cloak: garante que os elementos com x-cloak fiquem ocultos até que Alpine.js os exiba --}}
+    <style>
+        [x-cloak] {
+            display: none !important;
+        }
+    </style>
+
     @livewireStyles
 </head>
+
 
 <body class='bg-slate-100'>
     <header class="bg-white">
