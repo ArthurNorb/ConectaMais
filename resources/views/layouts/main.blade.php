@@ -22,9 +22,6 @@
     {{-- Vite --}}
     @vite('resources/css/app.css', 'resources/js/app.js')
 
-    {{-- alpine --}}
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
     @stack('style')
     @livewireStyles
 </head>
@@ -53,7 +50,6 @@
                         Digite pelo menos 3 caracteres para pesquisar.
                     </p>
                 </div>
-
             @endauth
 
             <div class="hidden lg:flex lg:flex-1 lg:justify-end">

@@ -99,11 +99,11 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="w-2/5 mb-3 space-y-2 text-xs">
+                                <div class="w-2/5 mb-3 space-y-2 text-xs" x-data>
                                     <label class="py-2 font-semibold text-themeColor">CEP</label>
-                                    <input placeholder="123456-78"
-                                        class="block w-full h-10 px-4 border rounded-lg appearance-none bg-grey-lighter text-grey-darker border-grey-lighter"
-                                        type="text" id='cep' name='cep'>
+                                    <input id="cep" name="cep" type="text" placeholder="123456-78"
+                                        x-mask="999999-99"
+                                        class="block w-full h-10 px-4 border rounded-lg appearance-none bg-grey-lighter text-grey-darker border-grey-lighter">
                                 </div>
                             </div>
                             <h4 class="py-2 mr-auto text-sm font-bold text-themeColor">Contatos</h4>
@@ -112,9 +112,8 @@
                                     <label for="celular" class="py-2 font-semibold text-themeColor">
                                         Celular <abbr title="required">*</abbr>
                                     </label>
-                                    <input id="celular" name="celular" type="text" required maxlength="15"
-                                        placeholder="(99) 99999-9999"
-                                        x-mask:dynamic="$input.length <= 14 ? '(99) 9999-9999' : '(99) 99999-9999'"
+                                    <input id="celular" name="celular" type="text" placeholder="(99) 12345-6789"
+                                        x-mask="(99) 99999-9999"
                                         class="block w-full h-10 px-4 border rounded-lg appearance-none bg-grey-lighter text-grey-darker border-grey-lighter">
                                 </div>
                                 <div class="w-full mb-3 space-y-2 text-xs" x-data>
@@ -122,35 +121,37 @@
                                         Telefone fixo
                                     </label>
                                     <input id="fixo" name="fixo" type="text" placeholder="(99) 1234-5678"
-                                        x-mask="'(99) 9999-9999'"
+                                        x-mask="(99) 9999-9999"
                                         class="block w-full h-10 px-4 border rounded-lg appearance-none bg-grey-lighter text-grey-darker border-grey-lighter">
                                 </div>
                             </div>
                             <div class="flex-row w-full text-xs md:flex md:space-x-4">
                                 <div class="w-full mb-3 space-y-2 text-xs">
-                                    <label class="py-2 font-semibold text-themeColor">E-mail</label>
-                                    <input placeholder="email@exemplo.com"
-                                        class="block w-full h-10 px-4 border rounded-lg appearance-none bg-grey-lighter text-grey-darker border-grey-lighter"
-                                        type="text" id='email' name='email'>
+                                    <label for="email" class="py-2 font-semibold text-themeColor">Email</label>
+                                    <input id="email" name="email" type="text"
+                                        placeholder="seuemail@exemplo.com"
+                                        class="block w-full h-10 px-4 border rounded-lg appearance-none bg-grey-lighter text-grey-darker border-grey-lighter">
+                                    <span id="email-error" class="text-xs text-red-500"></span>
                                 </div>
                             </div>
-                            <h4 class="py-2 mr-auto text-sm font-bold text-themeColor">Redes Sociais</h4>
-                            <livewire:rede-social />
-
-                            <p class="my-3 text-xs text-right text-red-500">Campos obrigatórios marcados com asterisco
-                                <abbr title="Required field">*</abbr>
-                            </p>
-                            <div class="flex flex-col-reverse mt-5 text-right md:space-x-3 md:block">
-                                <button onclick="window.history.back()"
-                                    class="px-5 py-2 mb-2 text-sm font-medium tracking-wider bg-white border-2 rounded-full text-themeColor border-themeColor hover:bg-red-400 hover:text-white hover:border-white">Cancelar</button>
-                                <input type="submit" value="Salvar"
-                                    class="px-5 py-2 mb-2 text-sm font-medium tracking-wider text-white border-2 border-white rounded-full bg-themeColor hover:bg-green-400 hover:text-white hover:border-white">
-                            </div>
                         </div>
-                    </form>
+                        <h4 class="py-2 mr-auto text-sm font-bold text-themeColor">Redes Sociais</h4>
+                        <livewire:rede-social />
+
+                        <p class="my-3 text-xs text-right text-red-500">Campos obrigatórios marcados com asterisco
+                            <abbr title="Required field">*</abbr>
+                        </p>
+                        <div class="flex flex-col-reverse mt-5 text-right md:space-x-3 md:block">
+                            <button onclick="window.history.back()"
+                                class="px-5 py-2 mb-2 text-sm font-medium tracking-wider bg-white border-2 rounded-full text-themeColor border-themeColor hover:bg-red-400 hover:text-white hover:border-white">Cancelar</button>
+                            <input type="submit" value="Salvar"
+                                class="px-5 py-2 mb-2 text-sm font-medium tracking-wider text-white border-2 border-white rounded-full bg-themeColor hover:bg-green-400 hover:text-white hover:border-white">
+                        </div>
                 </div>
+                </form>
             </div>
         </div>
+    </div>
     </div>
 
 @section('scripts')
@@ -168,6 +169,25 @@
                 reader.readAsDataURL(file);
             }
         });
+
+        // validação do email
+        const emailInput = document.getElementById('email');
+        const emailError = document.getElementById('email-error');
+
+        emailInput.addEventListener('blur', validateEmail);
+
+        function validateEmail() {
+            const emailValue = emailInput.value;
+            const emailRegex = /^[^@]+@[^@]+\.[^@]+$/;
+
+            if (!emailRegex.test(emailValue)) {
+                emailError.textContent = 'Por favor, insira um email válido';
+                emailInput.classList.add('border-red-500');
+            } else {
+                emailError.textContent = '';
+                emailInput.classList.remove('border-red-500');
+            }
+        }
     </script>
 @endsection
 @endsection
