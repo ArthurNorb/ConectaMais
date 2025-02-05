@@ -35,7 +35,7 @@ class ContatoController extends Controller
                 'enderecos.cidade',
                 'estados.sigla',
                 'enderecos.cep'
-            );
+            )->orderByRaw("COALESCE(pessoas.apelido, pessoas.nome) ASC");
 
         // dd($search);
         if ($search) {
@@ -85,7 +85,6 @@ class ContatoController extends Controller
             $endereco->estados_id = $request->input('uf');
             $endereco->save();
             $pessoa->enderecos_id = $endereco->id;
-            $pessoa->save();
         }
         // upload avatar do contato
         if ($request->hasFile('avatar') && $request->file('avatar')->isValid()) {

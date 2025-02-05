@@ -66,6 +66,35 @@
                                         type="date" id='birthday' name='birthday'>
                                 </div>
                             </div>
+                            <h4 class="py-2 mr-auto text-sm font-bold text-themeColor">Contatos</h4>
+                            <div class="flex-row w-full text-xs md:flex md:space-x-4">
+                                <div class="w-full mb-3 space-y-2 text-xs" x-data>
+                                    <label for="celular" class="py-2 font-semibold text-themeColor">
+                                        Celular <abbr title="required">*</abbr>
+                                    </label>
+                                    <input id="celular" name="celular" type="text" placeholder="(99) 12345-6789"
+                                        x-mask="(99) 99999-9999"
+                                        class="block w-full h-10 px-4 border rounded-lg appearance-none bg-grey-lighter text-grey-darker border-grey-lighter">
+                                </div>
+                                <div class="w-full mb-3 space-y-2 text-xs" x-data>
+                                    <label for="fixo" class="py-2 font-semibold text-themeColor">
+                                        Telefone fixo
+                                    </label>
+                                    <input id="fixo" name="fixo" type="text" placeholder="(99) 1234-5678"
+                                        x-mask="(99) 9999-9999"
+                                        class="block w-full h-10 px-4 border rounded-lg appearance-none bg-grey-lighter text-grey-darker border-grey-lighter">
+                                </div>
+                            </div>
+                            <div class="flex-row w-full text-xs md:flex md:space-x-4">
+                                <div class="w-full mb-3 space-y-2 text-xs">
+                                    <label for="email" class="py-2 font-semibold text-themeColor">Email</label>
+                                    <input id="email" name="email" type="text"
+                                        placeholder="email@exemplo.com"
+                                        class="block w-full h-10 px-4 border rounded-lg appearance-none bg-grey-lighter text-grey-darker border-grey-lighter">
+                                    <span id="email-error" class="text-xs text-red-500"></span>
+                                </div>
+                            </div>
+                        </div>
                             <h4 class="py-2 mr-auto text-sm font-bold text-themeColor">Endereço</h4>
                             @if (
                                 $errors->has('rua') ||
@@ -111,40 +140,11 @@
                                 </div>
                                 <div class="w-2/5 mb-3 space-y-2 text-xs" x-data>
                                     <label class="py-2 font-semibold text-themeColor">CEP</label>
-                                    <input id="cep" name="cep" type="text" placeholder="123456-78"
-                                        x-mask="999999-99"
+                                    <input id="cep" name="cep" type="text" placeholder="12345-678"
+                                        x-mask="99999-999"
                                         class="block w-full h-10 px-4 border rounded-lg appearance-none bg-grey-lighter text-grey-darker border-grey-lighter">
                                 </div>
                             </div>
-                            <h4 class="py-2 mr-auto text-sm font-bold text-themeColor">Contatos</h4>
-                            <div class="flex-row w-full text-xs md:flex md:space-x-4">
-                                <div class="w-full mb-3 space-y-2 text-xs" x-data>
-                                    <label for="celular" class="py-2 font-semibold text-themeColor">
-                                        Celular <abbr title="required">*</abbr>
-                                    </label>
-                                    <input id="celular" name="celular" type="text" placeholder="(99) 12345-6789"
-                                        x-mask="(99) 99999-9999"
-                                        class="block w-full h-10 px-4 border rounded-lg appearance-none bg-grey-lighter text-grey-darker border-grey-lighter">
-                                </div>
-                                <div class="w-full mb-3 space-y-2 text-xs" x-data>
-                                    <label for="fixo" class="py-2 font-semibold text-themeColor">
-                                        Telefone fixo
-                                    </label>
-                                    <input id="fixo" name="fixo" type="text" placeholder="(99) 1234-5678"
-                                        x-mask="(99) 9999-9999"
-                                        class="block w-full h-10 px-4 border rounded-lg appearance-none bg-grey-lighter text-grey-darker border-grey-lighter">
-                                </div>
-                            </div>
-                            <div class="flex-row w-full text-xs md:flex md:space-x-4">
-                                <div class="w-full mb-3 space-y-2 text-xs">
-                                    <label for="email" class="py-2 font-semibold text-themeColor">Email</label>
-                                    <input id="email" name="email" type="text"
-                                        placeholder="seuemail@exemplo.com"
-                                        class="block w-full h-10 px-4 border rounded-lg appearance-none bg-grey-lighter text-grey-darker border-grey-lighter">
-                                    <span id="email-error" class="text-xs text-red-500"></span>
-                                </div>
-                            </div>
-                        </div>
                         <h4 class="py-2 mr-auto text-sm font-bold text-themeColor">Redes Sociais</h4>
                         <livewire:rede-social />
 
