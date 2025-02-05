@@ -15,7 +15,7 @@ class ContatoController extends Controller
     public function index()
     {
         $search = request('search');
-    
+
         $query = Pessoa::leftJoin('enderecos', 'pessoas.enderecos_id', 'enderecos.id')
             ->leftJoin('estados', 'enderecos.estados_id', 'estados.id')
             ->leftJoin('redes_sociais', 'pessoas.id', 'redes_sociais.pessoas_id')
@@ -36,21 +36,21 @@ class ContatoController extends Controller
                 'estados.sigla',
                 'enderecos.cep'
             );
-    
-            // dd($search);
+
+        // dd($search);
         if ($search) {
             $query->where('pessoas.nome', 'like', "%{$search}%")
-                  ->orWhere('pessoas.sobrenome', 'like', "%{$search}%")
-                  ->orWhere('pessoas.apelido', 'like', "%{$search}%")
-                  ->orWhere('pessoas.email', 'like', "%{$search}%")
-                  ->orWhere('pessoas.celular', 'like', "%{$search}%");
+                ->orWhere('pessoas.sobrenome', 'like', "%{$search}%")
+                ->orWhere('pessoas.apelido', 'like', "%{$search}%")
+                ->orWhere('pessoas.email', 'like', "%{$search}%")
+                ->orWhere('pessoas.celular', 'like', "%{$search}%");
         }
-    
+
         $contatos = $query->paginate(10);
-    
+
         return view('welcome', compact('contatos', 'search'));
     }
-    
+
 
     /**
      * Show the form for creating a new resource.
@@ -67,7 +67,26 @@ class ContatoController extends Controller
     public function store(Request $request)
     {
         $pessoa = new Pessoa;
+        // upload endereço
+        if ($request->input('rua')) {
+            $request->validate([
+                'rua' => 'nullable|required_with:numero,cidade,uf,cep',
+                'numero' => 'nullable|required_with:rua,cidade,uf,cep',
+                'cidade' => 'nullable|required_with:rua,numero,uf,cep',
+                'uf' => 'nullable|required_with:rua,numero,cidade,cep',
+                'cep' => 'nullable|required_with:rua,numero,cidade,uf',
+            ]);
 
+            $endereco = new Endereco;
+            $endereco->rua = $request->input('rua');
+            $endereco->numero = $request->input('numero');
+            $endereco->cidade = $request->input('cidade');
+            $endereco->cep = $request->input('cep');
+            $endereco->estados_id = $request->input('uf');
+            $endereco->save();
+            $pessoa->enderecos_id = $endereco->id;
+            $pessoa->save();
+        }
         // upload avatar do contato
         if ($request->hasFile('avatar') && $request->file('avatar')->isValid()) {
             $requestImage = $request->file('avatar'); // Corrigido aqui!
@@ -86,20 +105,6 @@ class ContatoController extends Controller
         $pessoa->celular = $request->input('celular');
         $pessoa->fixo = $request->input('fixo');
         $pessoa->save();
-
-        // upload endereço
-
-        if ($request->input('rua')) {
-            $endereco = new Endereco;
-            $endereco->rua = $request->input('rua');
-            $endereco->numero = $request->input('numero');
-            $endereco->cidade = $request->input('cidade');
-            $endereco->cep = $request->input('cep');
-            $endereco->estados_id = $request->input('uf');
-            $endereco->save();
-            $pessoa->enderecos_id = $endereco->id;
-            $pessoa->save();
-        }
 
         return redirect('/');
     }

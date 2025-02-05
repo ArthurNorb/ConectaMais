@@ -67,6 +67,16 @@
                                 </div>
                             </div>
                             <h4 class="py-2 mr-auto text-sm font-bold text-themeColor">Endereço</h4>
+                            @if (
+                                $errors->has('rua') ||
+                                    $errors->has('numero') ||
+                                    $errors->has('cidade') ||
+                                    $errors->has('uf') ||
+                                    $errors->has('cep'))
+                                <p class="text-xs text-red-500">Se preencher um campo do endereço, todos devem ser
+                                    preenchidos.</p>
+                            @endif
+
                             <div class="flex-row w-full text-xs md:flex md:space-x-4">
                                 <div class="w-3/4 mb-3 space-y-2 text-xs">
                                     <label class="py-2 font-semibold text-themeColor">Rua </label>
