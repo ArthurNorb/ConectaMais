@@ -112,7 +112,7 @@
                             <input placeholder="Rua São Francisco"
                                 class="block w-full h-10 px-4 border rounded-lg appearance-none bg-grey-lighter text-grey-darker {{ $errors->has('rua') ? 'border-red-500' : 'border-grey-lighter' }}"
                                 type="text" id="rua" name="rua"
-                                value="{{ old('rua', optional($contato->endereco)->rua) }}">
+                                value="{{ old('rua', $contato->rua) }}">
                             @error('rua')
                                 <span class="text-xs text-red-500">{{ $message }}</span>
                             @enderror
@@ -122,7 +122,7 @@
                             <input placeholder="123"
                                 class="block w-full h-10 px-4 border rounded-lg appearance-none bg-grey-lighter text-grey-darker {{ $errors->has('numero') ? 'border-red-500' : 'border-grey-lighter' }}"
                                 type="text" id="numero" name="numero"
-                                value="{{ old('numero', optional($contato->endereco)->numero) }}">
+                                value="{{ old('numero', $contato->numero) }}">
                             @error('numero')
                                 <span class="text-xs text-red-500">{{ $message }}</span>
                             @enderror
@@ -134,22 +134,19 @@
                             <input placeholder="Cidade"
                                 class="block w-full h-10 px-4 border rounded-lg appearance-none bg-grey-lighter text-grey-darker {{ $errors->has('cidade') ? 'border-red-500' : 'border-grey-lighter' }}"
                                 type="text" id="cidade" name="cidade"
-                                value="{{ old('cidade', optional($contato->endereco)->cidade) }}">
+                                value="{{ old('cidade', $contato->cidade) }}">
                             @error('cidade')
                                 <span class="text-xs text-red-500">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="w-1/5 mb-3 space-y-2 text-xs">
                             <label class="py-2 font-semibold text-themeColor">Estado</label>
-                            <select
-                                class="block w-full h-10 px-4 border rounded-lg bg-grey-lighter text-grey-darker {{ $errors->has('estados_id') ? 'border-red-500' : 'border-grey-lighter' }} md:w-full"
-                                id="estados_id" name="estados_id">
+                            <select name="estado_id" id="estado_id" class="...">
                                 <option value="" disabled
-                                    {{ old('estados_id', optional($contato->endereco)->estados_id) ? '' : 'selected' }}>
-                                    UF</option>
+                                    {{ old('estado_id', $contato->estado_id) ? '' : 'selected' }}>UF</option>
                                 @foreach ($estados as $estado)
                                     <option value="{{ $estado->id }}"
-                                        {{ old('estados_id', optional($contato->endereco)->estados_id) == $estado->id ? 'selected' : '' }}>
+                                        {{ old('estado_id', $contato->estado_id) == $estado->id ? 'selected' : '' }}>
                                         {{ $estado->sigla }}
                                     </option>
                                 @endforeach
@@ -163,7 +160,7 @@
                             <input id="cep" name="cep" type="text" placeholder="12345-678"
                                 x-mask="99999-999"
                                 class="block w-full h-10 px-4 border rounded-lg appearance-none bg-grey-lighter text-grey-darker {{ $errors->has('cep') ? 'border-red-500' : 'border-grey-lighter' }}"
-                                value="{{ old('cep', optional($contato->endereco)->cep) }}">
+                                value="{{ old('cep', $contato->cep) }}">
                             @error('cep')
                                 <span class="text-xs text-red-500">{{ $message }}</span>
                             @enderror

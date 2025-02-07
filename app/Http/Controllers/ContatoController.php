@@ -34,6 +34,7 @@ class ContatoController extends Controller
                 'enderecos.numero',
                 'enderecos.cidade',
                 'estados.sigla',
+                'estados.id as estado_id',
                 'enderecos.cep'
             )->orderByRaw("COALESCE(pessoas.apelido, pessoas.nome) ASC");
 
@@ -138,13 +139,17 @@ class ContatoController extends Controller
                 'enderecos.numero',
                 'enderecos.cidade',
                 'estados.sigla',
+                'estados.id as estado_id',
                 'enderecos.cep'
             )
             ->where('pessoas.id', $id)
             ->firstOrFail();
 
-        return view('contacts.edit', compact('contato'));
+        $estados = Estado::all();
+
+        return view('contacts.edit', compact('contato', 'estados'));
     }
+
 
 
 
