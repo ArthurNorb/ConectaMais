@@ -35,8 +35,8 @@
 </head>
 
 
-<body class='bg-slate-100'>
-    <header class="bg-white">
+<body class="flex flex-col min-h-screen bg-slate-100">
+    <header class="bg-white border-gray-200">
         <nav class="flex items-center justify-between p-3 mx-auto max-w-7xl lg:px-8" aria-label="Global">
             <div class="flex items-center lg:flex-1">
                 <a href="/" class="-m-1.5 p-1.5 flex items-center">
@@ -126,14 +126,29 @@
             </div>
         </div>
     </header>
-
-    <main>
+    <main class="flex-grow">
         @yield('content')
 
         @livewireScripts
         @stack('scripts')
     </main>
-
+    <footer class="mt-auto bg-white border-t border-gray-200">
+        <div class="flex flex-col items-center justify-between px-4 py-6 mx-auto max-w-7xl md:flex-row">
+            <div class="flex items-center">
+                <a href="https://www.masterix.com.br/" target="_blank">
+                    <img src="/img/logo_masterix.png" alt="Logo Masterix" class="h-10">
+                </a>
+            </div>
+            <nav class="flex flex-col items-center mt-4 md:mt-0">
+                <div class="flex items-center space-x-2 text-sm text-themeColorLight hover:text-themeColor">
+                    <ion-icon name="logo-github" class="text-lg"></ion-icon>
+                    <a href="https://github.com/ArthurNorb/ConectaMais" target="_blank">Repositório git</a>
+                </div>
+                <p class="text-sm text-themeColorLight">Desenvolvido por Arthur Norberto</p>
+            </nav>
+            <p class="mt-4 text-sm text-themeColorLight md:mt-0">&copy; 2025 Masterix</p>
+        </div>
+    </footer>
     @yield('scripts')
 
     <script>
