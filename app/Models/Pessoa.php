@@ -23,6 +23,8 @@ class Pessoa extends Model
         'birthday',
         'celular',
         'fixo',
+        'endereco_id',
+        'user_id',
     ];
 
     protected $casts = [

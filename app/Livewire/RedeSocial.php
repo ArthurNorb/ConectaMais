@@ -10,9 +10,15 @@ class RedeSocial extends Component
         ['nome' => '', 'link' => ''],
     ];
 
+    public function updateSocialMedia($index, $campo, $valor)
+    {
+        $this->socialMedias[$index] = ['nome' => '', 'link' => ''];
+    }
+
     public function addSocialMedia()
     {
         $this->socialMedias[] = ['nome' => '', 'link' => ''];
+        // dd($this->socialMedias);
     }
 
     public function render()

@@ -3,14 +3,14 @@
         <div class="flex items-center w-full space-x-4">
             <div class="w-2/5">
                 <label class="py-2 font-semibold text-themeColor">Nome da Rede</label>
-                <input wire:model="socialMedias.{{ $index }}.nome" placeholder="Instagram"
+                <input wire:model.live="socialMedias.{{ $index }}.nome" placeholder="Instagram"
                     class="block w-full h-10 px-4 border rounded-lg appearance-none bg-grey-lighter text-grey-darker border-grey-lighter"
                     type="text" id='nome_rede' name='nome_rede'>
             </div>
             
             <div class="w-3/5">
                 <label class="py-2 font-semibold text-themeColor">Link</label>
-                <input wire:model="socialMedias.{{ $index }}.link" placeholder="instagram.com/username"
+                <input wire:model.live="socialMedias.{{ $index }}.link" placeholder="instagram.com/username"
                     class="block w-full h-10 px-4 border rounded-lg appearance-none bg-grey-lighter text-grey-darker border-grey-lighter"
                     type="text" id='link_rede' name='link_rede'>
             </div>

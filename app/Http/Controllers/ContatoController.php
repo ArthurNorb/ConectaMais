@@ -6,6 +6,7 @@ use App\Models\Endereco;
 use App\Models\Estado;
 use App\Models\Pessoa;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ContatoController extends Controller
 {
@@ -15,10 +16,10 @@ class ContatoController extends Controller
     public function index()
     {
         $search = request('search');
-
         $query = Pessoa::leftJoin('enderecos', 'pessoas.enderecos_id', 'enderecos.id')
             ->leftJoin('estados', 'enderecos.estados_id', 'estados.id')
             ->leftJoin('redes_sociais', 'pessoas.id', 'redes_sociais.pessoas_id')
+            ->where('pessoas.users_id', Auth::id())
             ->select(
                 'pessoas.nome as nome_pessoa',
                 'pessoas.celular',
@@ -68,6 +69,7 @@ class ContatoController extends Controller
     public function store(Request $request)
     {
         $pessoa = new Pessoa;
+        // dd($request->toArray());
         // upload endereço
         if ($request->input('rua')) {
             $request->validate([
@@ -89,7 +91,7 @@ class ContatoController extends Controller
         }
         // upload avatar do contato
         if ($request->hasFile('avatar') && $request->file('avatar')->isValid()) {
-            $requestImage = $request->file('avatar'); // Corrigido aqui!
+            $requestImage = $request->file('avatar'); 
             $extension = $requestImage->extension();
             $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
             $requestImage->move(public_path('img/avatares'), $imageName);
@@ -104,6 +106,7 @@ class ContatoController extends Controller
         $pessoa->email = $request->input('email');
         $pessoa->celular = $request->input('celular');
         $pessoa->fixo = $request->input('fixo');
+        $pessoa->users_id = Auth::id();
         $pessoa->save();
 
         return redirect('/');
