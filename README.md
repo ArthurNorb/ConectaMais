@@ -40,7 +40,7 @@ Siga os passos abaixo para configurar a aplicação:
 
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/seu-usuario/conecta-plus.git
+   git clone https://github.com/ArthurNorb/conecta-plus.git
    cd conecta-plus
    ```
 
