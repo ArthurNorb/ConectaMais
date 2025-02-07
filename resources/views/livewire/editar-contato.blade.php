@@ -6,7 +6,7 @@
                     <h2 class="mr-auto text-2xl font-semibold text-themeColor">Editar Contato</h2>
                     <div class="w-full mt-3 sm:w-auto sm:ml-auto sm:mt-0"></div>
                 </div>
-                <form action="#" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('contatos.update', $contato->pessoa_id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="mt-4">

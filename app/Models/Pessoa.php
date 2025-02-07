@@ -33,4 +33,6 @@ class Pessoa extends Model
     public function enderecos(): HasOne {
         return $this->hasOne(Endereco::class, 'enderecos_id', 'id');
     }
+
+    protected $guarded = [];
 }

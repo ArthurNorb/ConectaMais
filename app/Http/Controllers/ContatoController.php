@@ -158,7 +158,9 @@ class ContatoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        Pessoa::findOrFail($id)->update($request->all());
+
+        return redirect('/');
     }
 
     /**
