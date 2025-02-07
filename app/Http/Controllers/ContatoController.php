@@ -166,6 +166,8 @@ class ContatoController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Pessoa::findOrFail($id)->delete();
+
+        return redirect('/');
     }
 }
