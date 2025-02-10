@@ -1,5 +1,3 @@
-@extends('layouts.main')
-
 <title>Cadastro - Conecta+</title>
 <link rel="icon" href="/img/logo conecta.png" type="image/png">
 
