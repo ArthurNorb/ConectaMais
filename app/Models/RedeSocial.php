@@ -4,26 +4,27 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class RedeSocial extends Model
 {
     use HasFactory;
+    protected $table = 'redes_sociais';
 
-    public $table = 'redes_socias';
-
+    // Campos que podem ser preenchidos em massa (não inclua 'id')
     protected $fillable = [
         'id',
         'nome',
         'link',
+        'pessoa_id',
     ];
 
     protected $casts = [
-        'created_at' => 'datetime', 
+        'created_at' => 'datetime',
         'updated_at' => 'datetime',
     ];
 
-    public function pessoas(): HasOne {
-        return $this->hasOne(Pessoa::class, 'pessoas_id', 'id');
+    public function pessoa()
+    {
+        return $this->belongsTo(Pessoa::class, 'pessoa_id', 'id');
     }
 }

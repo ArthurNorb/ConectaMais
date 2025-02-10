@@ -136,13 +136,13 @@
         <div class="flex flex-col items-center justify-between px-4 py-6 mx-auto max-w-7xl md:flex-row">
             <div class="flex items-center">
                 <a href="https://www.masterix.com.br/" target="_blank">
-                    <img src="/img/logo_masterix.png" alt="Logo Masterix" class="h-10">
+                    <img src="/img/logo_masterix.png" alt="Logo Masterix" class="h-9">
                 </a>
             </div>
             <nav class="flex flex-col items-center mt-4 md:mt-0">
                 <div class="flex items-center space-x-2 text-sm text-themeColorLight hover:text-themeColor">
-                    <ion-icon name="logo-github" class="text-lg"></ion-icon>
                     <a href="https://github.com/ArthurNorb/ConectaMais" target="_blank">Repositório git</a>
+                    <ion-icon name="logo-github" class="text-lg"></ion-icon>
                 </div>
                 <p class="text-sm text-themeColorLight">Desenvolvido por Arthur Norberto</p>
             </nav>
