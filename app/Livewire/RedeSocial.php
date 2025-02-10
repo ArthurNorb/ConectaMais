@@ -8,13 +8,11 @@ use Livewire\Component;
 
 class RedeSocial extends Component
 {
-    // Armazena as redes sociais como array de arrays (cada elemento tem 'nome' e 'link')
     public $redes = [];
     public $contatoId;
 
     public function mount()
     {
-        // Carrega as redes sociais já cadastradas (se houver) convertendo para array
         $this->redes = $this->getRedes();
     }
 
