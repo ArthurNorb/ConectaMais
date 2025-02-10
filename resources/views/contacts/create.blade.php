@@ -89,7 +89,7 @@
                                     <input id="email" name="email" type="text"
                                         placeholder="email@exemplo.com"
                                         class="block w-full h-10 px-4 border rounded-lg appearance-none bg-grey-lighter text-grey-darker border-grey-lighter">
-                                    <span id="email-error" class="text-xs text-red-500"></span>
+                                    <span id="email-error" class="text-xs text-red-600"></span>
                                 </div>
                             </div>
                         </div>
@@ -100,7 +100,7 @@
                                     $errors->has('cidade') ||
                                     $errors->has('uf') ||
                                     $errors->has('cep'))
-                                <p class="text-xs text-red-500">Se preencher um campo do endereço, todos devem ser
+                                <p class="text-xs text-red-600">Se preencher um campo do endereço, todos devem ser
                                     preenchidos.</p>
                             @endif
 
@@ -146,14 +146,14 @@
                         <h4 class="py-2 mr-auto text-sm font-bold text-themeColor">Redes Sociais</h4>
                         <livewire:rede-social />
 
-                        <p class="my-3 text-xs text-right text-red-500">Campos obrigatórios marcados com asterisco
+                        <p class="my-3 text-xs text-right text-red-600">Campos obrigatórios marcados com asterisco
                             <abbr title="Required field">*</abbr>
                         </p>
                         <div class="flex flex-col-reverse mt-5 text-right md:space-x-3 md:block">
                             <button onclick="window.history.back()"
-                                class="px-5 py-2 mb-2 text-sm font-medium tracking-wider bg-white border-2 rounded-full text-themeColor border-themeColor hover:bg-red-400 hover:text-white hover:border-white">Cancelar</button>
+                                class="px-5 py-2 mb-2 text-sm font-medium tracking-wider bg-white border-2 rounded-full text-themeColor border-themeColor hover:bg-red-600 hover:text-white hover:border-white">Cancelar</button>
                             <input type="submit" value="Salvar"
-                                class="px-5 py-2 mb-2 text-sm font-medium tracking-wider text-white border-2 border-white rounded-full bg-themeColor hover:bg-green-400 hover:text-white hover:border-white">
+                                class="px-5 py-2 mb-2 text-sm font-medium tracking-wider text-white border-2 border-white rounded-full bg-themeColor hover:bg-green-500 hover:text-white hover:border-white">
                         </div>
                 </div>
                 </form>

@@ -26,7 +26,6 @@ class RedeSocial extends Component
     public function getRedes()
     {
         if ($this->contatoId) {
-            // Busca as redes sociais do contato e converte para array
             return ModelsRedeSocial::where('redes_sociais.pessoa_id', $this->contatoId)
                 ->get()
                 ->toArray();
