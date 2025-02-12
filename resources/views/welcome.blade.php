@@ -36,7 +36,7 @@
                                             {{ $contato->celular }}
                                         </p>
                                         @if ($contato->fixo)
-                                            <p class="mt-1 text-sm truncate text-themeColorLight"><b>Fixo</b>
+                                            <p class="mt-1 text-sm truncate text-themeColorLight"><b>Fixo:</b>
                                                 {{ $contato->fixo }}
                                             </p>
                                         @endif
@@ -57,11 +57,12 @@
                                 </div>
                             </a>
                         </li>
-                        @empty
+                    @empty
                         <div class="flex justify-center w-full">
                             <div class="flex flex-col items-center max-w-lg text-center">
                                 <h1 class="text-3xl font-semibold text-themeColor">Você ainda não possui nenhum contato</h1>
-                                <p class="mt-4 text-lg text-gray-500">Clique no botão abaixo para adicionar seu primeiro contato</p>
+                                <p class="mt-4 text-lg text-gray-500">Clique no botão abaixo para adicionar seu primeiro contato
+                                </p>
                                 <a href="/contacts/create"
                                     class="inline-block px-6 py-3 mt-6 text-sm font-semibold rounded-full bg-themeColor text-slate-100 hover:bg-themeColorLight">
                                     Adicionar Novo Contato

@@ -10,7 +10,6 @@ class RedeSocial extends Model
     use HasFactory;
     protected $table = 'redes_sociais';
 
-    // Campos que podem ser preenchidos em massa (não inclua 'id')
     protected $fillable = [
         'id',
         'nome',

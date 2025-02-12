@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Endereco;
 use App\Models\Estado;
 use App\Models\Pessoa;
+use App\Models\RedeSocial;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -36,10 +37,11 @@ class ContatoController extends Controller
                 'enderecos.cidade',
                 'estados.sigla',
                 'estados.id as estado_id',
-                'enderecos.cep'
-            )->orderByRaw("COALESCE(pessoas.apelido, pessoas.nome) ASC");
+                'enderecos.cep',
+                'redes_sociais.id as redes_id'
+            )
+            ->orderByRaw("COALESCE(pessoas.apelido, pessoas.nome) ASC");
 
-        // dd($search);
         if ($search) {
             $query->where('pessoas.nome', 'like', "%{$search}%")
                 ->orWhere('pessoas.sobrenome', 'like', "%{$search}%")
@@ -52,6 +54,7 @@ class ContatoController extends Controller
 
         return view('welcome', compact('contatos', 'search'));
     }
+
 
 
     /**
@@ -69,15 +72,14 @@ class ContatoController extends Controller
     public function store(Request $request)
     {
         $pessoa = new Pessoa;
-        // dd($request->toArray());
-        // upload endereço
+        // Upload endereço, se preenchido
         if ($request->input('rua')) {
             $request->validate([
-                'rua' => 'nullable|required_with:numero,cidade,uf,cep',
+                'rua'    => 'nullable|required_with:numero,cidade,uf,cep',
                 'numero' => 'nullable|required_with:rua,cidade,uf,cep',
                 'cidade' => 'nullable|required_with:rua,numero,uf,cep',
-                'uf' => 'nullable|required_with:rua,numero,cidade,cep',
-                'cep' => 'nullable|required_with:rua,numero,cidade,uf',
+                'uf'     => 'nullable|required_with:rua,numero,cidade,cep',
+                'cep'    => 'nullable|required_with:rua,numero,cidade,uf',
             ]);
 
             $endereco = new Endereco;
@@ -89,16 +91,17 @@ class ContatoController extends Controller
             $endereco->save();
             $pessoa->enderecos_id = $endereco->id;
         }
-        // upload avatar do contato
+
+        // Upload avatar do contato
         if ($request->hasFile('avatar') && $request->file('avatar')->isValid()) {
-            $requestImage = $request->file('avatar'); 
+            $requestImage = $request->file('avatar');
             $extension = $requestImage->extension();
             $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
             $requestImage->move(public_path('img/avatares'), $imageName);
             $pessoa->avatar = 'img/avatares/' . $imageName;
         }
 
-        // upload contato
+        // Dados do contato
         $pessoa->nome = $request->input('nome');
         $pessoa->sobrenome = $request->input('sobrenome');
         $pessoa->apelido = $request->input('apelido');
@@ -109,8 +112,24 @@ class ContatoController extends Controller
         $pessoa->users_id = Auth::id();
         $pessoa->save();
 
+        // Salvar redes sociais (dados vindos do componente Livewire via input hidden "redes_sociais")
+        $redesJson = $request->input('redes_sociais') ? $request->input('redes_sociais') : null;
+        if ($request->input('redes_sociais')) {
+            $redesArray = json_decode($redesJson, true);
+            foreach ($redesArray as $rede) {
+                $salvar_rede = new RedeSocial;
+                $salvar_rede->nome = $rede['nome'];
+                $salvar_rede->link = $rede['link'];
+                $salvar_rede->pessoas_id = $pessoa->id;
+                $salvar_rede->save();
+            }
+            // dd(json_decode($redesJson, true));
+        }
+
         return redirect('/');
     }
+
+
 
     /**
      * Display the specified resource.

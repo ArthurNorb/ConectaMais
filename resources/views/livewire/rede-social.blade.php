@@ -46,4 +46,7 @@
             class="px-5 py-2 mb-2 text-sm font-medium tracking-wider bg-white border-2 rounded-full text-themeColor border-themeColor hover:bg-themeColor hover:text-white hover:border-white">
         Adicionar Rede Social
     </button>
+
+    <!-- Campo hidden que guarda os dados das redes sociais -->
+    <input type="hidden" name="redes_sociais" value='@json($redes)'>
 </div>
