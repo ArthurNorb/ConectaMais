@@ -50,7 +50,6 @@
                                                 {{ $contato->rua }}, {{ $contato->numero }}, {{ $contato->cidade }},
                                                 {{ $contato->nome_estado }} - {{ $contato->cep }}</p>
                                         @endif
-                                        {{-- @dd($contato->redesSociais) --}}
                                         @foreach ($contato->redesSociais()->limit(1)->get() as $redes)
                                             <p class="mt-1 text-sm truncate text-themeColorLight"><b>{{ $redes->nome }}:</b>
                                                 {{ $redes->link }}</p>

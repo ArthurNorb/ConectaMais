@@ -111,7 +111,7 @@ class ContatoController extends Controller
         $pessoa->users_id = Auth::id();
         $pessoa->save();
 
-        // Salvar redes sociais (dados vindos do componente Livewire via input hidden "redes_sociais")
+        // Salvar redes sociais 
         $redesJson = $request->input('redes_sociais') ? $request->input('redes_sociais') : null;
         if ($request->input('redes_sociais')) {
             $redesArray = json_decode($redesJson, true);

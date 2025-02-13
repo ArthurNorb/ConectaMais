@@ -24,7 +24,7 @@
 
     @stack('style')
 
-    {{-- CSS para x-cloak: garante que os elementos com x-cloak fiquem ocultos até que Alpine.js os exiba --}}
+    {{-- CSS para x-cloak--}}
     <style>
         [x-cloak] {
             display: none !important;
