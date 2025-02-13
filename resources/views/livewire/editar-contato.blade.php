@@ -21,7 +21,8 @@
                                             alt="Avatar Upload">
                                     </div>
                                     <label class="cursor-pointer">
-                                        <input type="file" accept="image/*" class="hidden" id="avatar" name="avatar">
+                                        <input type="file" accept="image/*" class="hidden" id="avatar"
+                                            name="avatar">
                                         <button type="button" onclick="document.getElementById('avatar').click()"
                                             class="px-4 py-2 text-sm text-white border-2 border-white rounded-full bg-themeColor hover:bg-white hover:text-themeColor hover:border-themeColor">
                                             Procurar
@@ -32,7 +33,8 @@
                         </div>
                         <div class="flex flex-col w-full text-base md:flex-row md:space-x-4">
                             <div class="w-full mb-4 space-y-2">
-                                <label class="py-2 font-semibold text-themeColor">Nome <abbr title="required">*</abbr></label>
+                                <label class="py-2 font-semibold text-themeColor">Nome <abbr
+                                        title="required">*</abbr></label>
                                 <input placeholder="Nome"
                                     class="block w-full h-10 px-4 border rounded-lg appearance-none bg-grey-lighter text-grey-darker border-grey-lighter"
                                     required="required" type="text" id="nome" name="nome"
@@ -96,11 +98,12 @@
                     <h4 class="py-2 mr-auto text-sm font-bold text-themeColor">Endereço</h4>
                     @if (
                         $errors->has('rua') ||
-                        $errors->has('numero') ||
-                        $errors->has('cidade') ||
-                        $errors->has('estados_id') ||
-                        $errors->has('cep'))
-                        <p class="text-xs text-red-600">Se preencher um campo do endereço, todos devem ser preenchidos.</p>
+                            $errors->has('numero') ||
+                            $errors->has('cidade') ||
+                            $errors->has('estados_id') ||
+                            $errors->has('cep'))
+                        <p class="text-xs text-red-600">Se preencher um campo do endereço, todos devem ser preenchidos.
+                        </p>
                     @endif
                     <div class="flex flex-col w-full text-base md:flex-row md:space-x-4">
                         <div class="w-3/4 mb-4 space-y-2">
@@ -139,7 +142,8 @@
                             <label class="py-2 font-semibold text-themeColor">Estado</label>
                             <select name="estado_id" id="estado_id"
                                 class="block w-full h-10 px-4 border rounded-lg bg-grey-lighter text-grey-darker">
-                                <option value="" disabled {{ old('estado_id', $contato->estado_id) ? '' : 'selected' }}>UF</option>
+                                <option value="" disabled
+                                    {{ old('estado_id', $contato->estado_id) ? '' : 'selected' }}>UF</option>
                                 @foreach ($estados as $estado)
                                     <option value="{{ $estado->id }}"
                                         {{ old('estado_id', $contato->estado_id) == $estado->id ? 'selected' : '' }}>
@@ -168,8 +172,8 @@
                         Campos obrigatórios marcados com asterisco <abbr title="Required field">*</abbr>
                     </p>
                     <div class="flex flex-col-reverse mt-5 text-right md:space-x-3 md:block">
-                        <input type="submit" value="Salvar"
-                            class="px-5 py-2 mb-2 text-sm font-medium tracking-wider text-white border-2 border-white rounded-full bg-themeColor hover:bg-green-400 hover:text-white hover:border-white">
+                        <button type="submit"
+                            class="px-5 py-2 mb-2 text-sm font-medium tracking-wider text-white border-2 border-white rounded-full bg-themeColor hover:bg-green-400 hover:text-white hover:border-white">Salvar</button>
                     </div>
                 </form>
             </div>

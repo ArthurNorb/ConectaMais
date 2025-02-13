@@ -112,17 +112,15 @@ class ContatoController extends Controller
         $pessoa->save();
 
         // Salvar redes sociais 
-        $redesJson = $request->input('redes_sociais') ? $request->input('redes_sociais') : null;
-        if ($request->input('redes_sociais')) {
-            $redesArray = json_decode($redesJson, true);
-            foreach ($redesArray as $rede) {
-                $salvar_rede = new RedeSocial;
-                $salvar_rede->nome = $rede['nome'];
-                $salvar_rede->link = $rede['link'];
-                $salvar_rede->pessoas_id = $pessoa->id;
-                $salvar_rede->save();
+        if ($request->has('redes') && is_array($request->redes)) {
+            foreach ($request->redes as $rede) {
+                if (isset($rede['nome']) && isset($rede['link'])) {
+                    $pessoa->redesSociais()->create([
+                        'nome' => $rede['nome'],
+                        'link' => $rede['link'],
+                    ]);
+                }
             }
-            // dd(json_decode($redesJson, true));
         }
 
         return redirect('/');
@@ -239,6 +237,7 @@ class ContatoController extends Controller
             }
         }
 
+        DD('ok');
         return redirect('/');
     }
 

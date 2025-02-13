@@ -46,6 +46,11 @@
                                 {{ $contato->nome_estado }} - {{ $contato->cep }}
                             </p>
                         @endif
+                        @foreach ($contato->redesSociais()->get() as $redes)
+                            <p class="mt-1 text-sm truncate text-themeColor">
+                                <b>{{ $redes->nome }}:</b> <a href="{{ $redes->link }}">{{ $redes->link }}</a>
+                            </p>
+                        @endforeach
                     </div>
                     <div class="flex flex-row items-center justify-end gap-2 mt-2 sm:mt-0 sm:flex-col">
                         <button @click="showEdit = true"
