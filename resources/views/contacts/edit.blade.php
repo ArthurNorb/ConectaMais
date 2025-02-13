@@ -52,7 +52,7 @@
                             class="px-4 py-2 text-2xl font-semibold bg-white border-2 rounded-xl border-themeColor text-themeColor hover:text-white hover:bg-themeColor hover:border-white">
                             <ion-icon name="create-outline"></ion-icon>
                         </button>
-                        <form action="/contatos/{{ $contato->pessoa_id }}" method="POST">
+                        <form action="/contatos/{{ $contato->id }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button id="deleteButton" type="submit"

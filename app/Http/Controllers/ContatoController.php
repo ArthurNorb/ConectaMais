@@ -247,8 +247,17 @@ class ContatoController extends Controller
      */
     public function destroy(string $id)
     {
+        $pessoa = Pessoa::findOrFail($id);
 
-        Pessoa::findOrFail($id)->delete();
+        if ($pessoa->redesSociais()->exists()) {
+            $pessoa->redesSociais()->delete();
+        }
+
+        if ($pessoa->enderecos_id) {
+            $pessoa->endereco()->delete();
+        }
+
+        $pessoa->delete();
 
         return redirect('/');
     }
