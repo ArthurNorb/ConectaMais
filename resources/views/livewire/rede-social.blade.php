@@ -13,9 +13,9 @@
                     <!-- Espaço reservado para o botão de remoção -->
                 </div>
             </div>
-            <div class="flex items-center space-x-4">
+            <div class="flex items-center">
                 <input type="hidden" name="redes[{{ $index }}][id]" value="{{ $redes[$index]['id'] }}">
-                <div class="w-2/5">
+                <div class="w-2/5 mr-4">
                     <input type="text" name="redes[{{ $index }}][nome]"
                         wire:model.live="redes.{{ $index }}.nome" placeholder="Nome da rede social"
                         class="w-full h-10 px-4 border rounded-lg bg-grey-lighter text-grey-darker border-grey-lighter">
@@ -23,7 +23,7 @@
                         <span class="text-xs text-red-500">{{ $message }}</span>
                     @enderror
                 </div>
-                <div class="w-3/5">
+                <div class="w-3/5 mr-4">
                     <input type="text" name="redes[{{ $index }}][link]"
                         wire:model.live="redes.{{ $index }}.link" placeholder="https://www.link.com/usuario"
                         class="w-full h-10 px-4 border rounded-lg bg-grey-lighter text-grey-darker border-grey-lighter">

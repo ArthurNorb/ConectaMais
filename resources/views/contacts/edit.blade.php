@@ -10,23 +10,23 @@
 
 @section('content')
     <div x-data="{ showEdit: false }">
-        <div class="flex justify-center px-6 py-10 sm:px-20">
-            <div class="w-full max-w-6xl p-4 space-y-6 bg-white shadow-lg sm:p-10 sm:space-y-8 rounded-xl">
-                <div class="flex flex-col items-center gap-2 sm:flex-row sm:items-center">
-                    <h2 class="text-lg font-semibold sm:text-xl text-themeColor">
+        <div class="flex justify-center px-4 py-6 sm:px-10">
+            <div class="w-full max-w-2xl p-6 space-y-4 bg-white shadow-lg rounded-xl">
+                <div class="flex flex-col items-center gap-1 sm:flex-row sm:items-center">
+                    <h2 class="text-base font-semibold sm:text-lg text-themeColor">
                         {{ $contato->nome_pessoa }} {{ $contato->sobrenome }}
                     </h2>
                     @if ($contato->apelido)
-                        <h2 class="text-lg font-semibold sm:text-xl text-themeColorLight">
+                        <h2 class="text-base font-semibold sm:text-lg text-themeColorLight">
                             ({{ $contato->apelido }})
                         </h2>
                     @endif
                 </div>
-                <div class="flex flex-col sm:flex-row sm:gap-8 sm:items-center">
-                    <img class="w-40 border-4 sm:w-44 rounded-xl border-themeColor"
+                <div class="flex flex-col sm:flex-row sm:gap-4 sm:items-center">
+                    <img class="w-32 border-2 sm:w-36 rounded-xl border-themeColor"
                         src="{{ $contato->avatar ? asset($contato->avatar) : asset('img/no-profile-pic-icon.jpg') }}"
                         alt="{{ $contato->nome_pessoa }}">
-                    <div class="flex-1 mt-4 text-sm sm:text-base sm:mt-0 sm:ml-8">
+                    <div class="flex-1 mt-2 text-xs sm:text-sm sm:mt-0 sm:ml-4">
                         @if ($contato->birthday)
                             <p class="mt-1 text-themeColor">
                                 <b>Data de Nascimento:</b> {{ date('d/m/Y', strtotime($contato->birthday)) }}
@@ -47,16 +47,16 @@
                             </p>
                         @endif
                     </div>
-                    <div class="flex flex-row items-center justify-end gap-2 mt-4 sm:mt-0 sm:flex-col">
+                    <div class="flex flex-row items-center justify-end gap-2 mt-2 sm:mt-0 sm:flex-col">
                         <button @click="showEdit = true"
-                            class="px-4 py-2 text-2xl font-semibold bg-white border-2 rounded-xl border-themeColor text-themeColor hover:text-white hover:bg-themeColor hover:border-white">
+                            class="px-3 py-1 text-xl font-semibold bg-white border-2 rounded-xl border-themeColor text-themeColor hover:text-white hover:bg-themeColor hover:border-white">
                             <ion-icon name="create-outline"></ion-icon>
                         </button>
                         <form action="/contatos/{{ $contato->id }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button id="deleteButton" type="submit"
-                                class="px-4 py-2 text-2xl font-semibold bg-white border-2 rounded-xl border-themeColor text-themeColor hover:text-white hover:bg-red-600 hover:border-white">
+                                class="px-3 py-1 text-xl font-semibold bg-white border-2 rounded-xl border-themeColor text-themeColor hover:text-white hover:bg-red-600 hover:border-white">
                                 <ion-icon name="trash-outline"></ion-icon>
                             </button>
                         </form>
@@ -64,7 +64,7 @@
                 </div>
             </div>
         </div>
-        <div x-show="showEdit" x-cloak x-transition class="flex justify-center px-6 pb-10">
+        <div x-show="showEdit" x-cloak x-transition class="flex justify-center px-4 pb-6">
             <livewire:editar-contato :contato="$contato" wire:key="editar-contato-{{ $contato->id }}" />
         </div>
     </div>

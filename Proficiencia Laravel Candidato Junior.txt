@@ -7,7 +7,7 @@ Devemos armazenar o Nome, Endere�o Completo, Data de Anivers�rio e os contat
 
 1) Cada pessoa pode ter quantos contatos o usu�rio quiser cadastrar. FEITO
 2) Cada contato deve ser de um tipo que pode ser parametrizado no sistema, pelo usu�rio. Por exemplo: Telefone Fixo, Telefone Celular, E-mail,  etc... FEITO
-3) A tela inicial do sistema mostra a lista dos registros no banco de dados, ordenado alfabeticamente; paginado de 10 em 10 registros. 
+3) A tela inicial do sistema mostra a lista dos registros no banco de dados, ordenado alfabeticamente; paginado de 10 em 10 registros.  FEITO
    Dever�o ser mostrados Nome e os contatos da pessoa.
 	Por exemplo:
 
@@ -18,10 +18,10 @@ Devemos armazenar o Nome, Endere�o Completo, Data de Anivers�rio e os contat
 		Fulano de Tal		(31) 12345-6789 - Fixo
 
 3.1) nesta tela inicial deve ter um bot�o para incluir um novo registro FEITO
-3.2) dever� ser poss�vel pesquisar por nome ou parte dele (3 ou mais letras)
-4) Se clicar no nome, vamos para uma tela onde podemos editar o registro.
-4.1) Na tela de edi��o do Registro poderemos acrescentar / alterar ou excluir contatos.
-5) Na tela de edi��o, teremos um bot�o para deletar aquele registro.
+3.2) dever� ser poss�vel pesquisar por nome ou parte dele (3 ou mais letras) FEITO
+4) Se clicar no nome, vamos para uma tela onde podemos editar o registro. FEITO
+4.1) Na tela de edi��o do Registro poderemos acrescentar / alterar ou excluir contatos. FEITO
+5) Na tela de edi��o, teremos um bot�o para deletar aquele registro. FEITO
 
 - crie a migration de todas as tabelas e os seeders que forem necess�rios FEITO
 - suba a aplica��o para um reposit�rio do gitlab (ou github) e envie a URL  FEITO
