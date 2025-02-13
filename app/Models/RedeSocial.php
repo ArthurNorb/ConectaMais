@@ -14,7 +14,7 @@ class RedeSocial extends Model
         'id',
         'nome',
         'link',
-        'pessoa_id',
+        'pessoas_id',
     ];
 
     protected $casts = [
@@ -24,6 +24,6 @@ class RedeSocial extends Model
 
     public function pessoa()
     {
-        return $this->belongsTo(Pessoa::class, 'pessoa_id', 'id');
+        return $this->belongsTo(Pessoa::class, 'pessoas_id', 'id');
     }
 }

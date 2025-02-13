@@ -14,7 +14,7 @@
                 <ul role="list" class="grid grid-cols-1 gap-6 mt-12 sm:grid-cols-2">
                     @forelse ($contatos as $contato)
                         <li class="col-span-1 bg-white divide-y divide-gray-200 rounded-lg shadow">
-                            <a href="{{ route('contatos.edit', $contato->pessoa_id) }}">
+                            <a href="{{ route('contatos.edit', $contato->id) }}">
                                 <div class="flex items-center justify-between w-full p-6 space-x-6">
                                     <div class="flex-1 truncate">
                                         <div class="flex items-center space-x-3">
@@ -50,6 +50,12 @@
                                                 {{ $contato->rua }}, {{ $contato->numero }}, {{ $contato->cidade }},
                                                 {{ $contato->nome_estado }} - {{ $contato->cep }}</p>
                                         @endif
+                                        {{-- @dd($contato->redesSociais) --}}
+                                        @foreach ($contato->redesSociais()->limit(1)->get() as $redes)
+                                            <p class="mt-1 text-sm truncate text-themeColorLight"><b>{{ $redes->nome }}:</b>
+                                                {{ $redes->link }}</p>
+
+                                        @endforeach
                                     </div>
                                     <img class="flex-shrink-0 object-cover w-16 h-16 rounded-full"
                                         src="{{ $contato->avatar ? asset($contato->avatar) : asset('img/no-profile-pic-icon.jpg') }}"

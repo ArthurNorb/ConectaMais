@@ -8,6 +8,7 @@ use App\Models\Pessoa;
 use App\Models\RedeSocial;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ContatoController extends Controller
 {
@@ -19,7 +20,6 @@ class ContatoController extends Controller
         $search = request('search');
         $query = Pessoa::leftJoin('enderecos', 'pessoas.enderecos_id', 'enderecos.id')
             ->leftJoin('estados', 'enderecos.estados_id', 'estados.id')
-            ->leftJoin('redes_sociais', 'pessoas.id', 'redes_sociais.pessoas_id')
             ->where('pessoas.users_id', Auth::id())
             ->select(
                 'pessoas.nome as nome_pessoa',
@@ -31,14 +31,13 @@ class ContatoController extends Controller
                 'pessoas.email',
                 'pessoas.avatar',
                 'pessoas.birthday',
-                'pessoas.id as pessoa_id',
+                'pessoas.id',
                 'enderecos.rua',
                 'enderecos.numero',
                 'enderecos.cidade',
                 'estados.sigla',
                 'estados.id as estado_id',
                 'enderecos.cep',
-                'redes_sociais.id as redes_id'
             )
             ->orderByRaw("COALESCE(pessoas.apelido, pessoas.nome) ASC");
 
@@ -148,7 +147,7 @@ class ContatoController extends Controller
             ->leftJoin('estados', 'enderecos.estados_id', 'estados.id')
             ->leftJoin('redes_sociais', 'pessoas.id', 'redes_sociais.pessoas_id')
             ->select(
-                'pessoas.id as pessoa_id',
+                'pessoas.id',
                 'pessoas.nome as nome_pessoa',
                 'pessoas.sobrenome',
                 'pessoas.apelido',
@@ -180,7 +179,65 @@ class ContatoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        Pessoa::findOrFail($id)->update($request->all());
+        $pessoa = Pessoa::findOrFail($id);
+
+        if ($request->input('rua')) {
+            $request->validate([
+                'rua'    => 'nullable|required_with:numero,cidade,uf,cep',
+                'numero' => 'nullable|required_with:rua,cidade,uf,cep',
+                'cidade' => 'nullable|required_with:rua,numero,uf,cep',
+                'uf'     => 'nullable|required_with:rua,numero,cidade,cep',
+                'cep'    => 'nullable|required_with:rua,numero,cidade,uf',
+            ]);
+
+            if ($pessoa->enderecos_id) {
+                $endereco = Endereco::find($pessoa->enderecos_id);
+                $endereco->rua = $request->input('rua');
+                $endereco->numero = $request->input('numero');
+                $endereco->cidade = $request->input('cidade');
+                $endereco->cep = $request->input('cep');
+                $endereco->estados_id = $request->input('uf');
+                $endereco->save();
+            } else {
+                $endereco = new Endereco;
+                $endereco->rua = $request->input('rua');
+                $endereco->numero = $request->input('numero');
+                $endereco->cidade = $request->input('cidade');
+                $endereco->cep = $request->input('cep');
+                $endereco->estados_id = $request->input('uf');
+                $endereco->save();
+                $pessoa->enderecos_id = $endereco->id;
+            }
+        }
+
+        if ($request->hasFile('avatar') && $request->file('avatar')->isValid()) {
+            $requestImage = $request->file('avatar');
+            $extension = $requestImage->extension();
+            $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
+            $requestImage->move(public_path('img/avatares'), $imageName);
+            $pessoa->avatar = 'img/avatares/' . $imageName;
+        }
+
+        $pessoa->nome = $request->input('nome');
+        $pessoa->sobrenome = $request->input('sobrenome');
+        $pessoa->apelido = $request->input('apelido');
+        $pessoa->birthday = $request->input('birthday');
+        $pessoa->email = $request->input('email');
+        $pessoa->celular = $request->input('celular');
+        $pessoa->fixo = $request->input('fixo');
+        $pessoa->save();
+
+        if ($request->has('redes') && is_array($request->redes)) {
+            $pessoa->redesSociais()->delete();
+            foreach ($request->redes as $rede) {
+                if (isset($rede['nome']) && isset($rede['link'])) {
+                    $pessoa->redesSociais()->create([
+                        'nome' => $rede['nome'],
+                        'link' => $rede['link'],
+                    ]);
+                }
+            }
+        }
 
         return redirect('/');
     }
@@ -190,6 +247,7 @@ class ContatoController extends Controller
      */
     public function destroy(string $id)
     {
+
         Pessoa::findOrFail($id)->delete();
 
         return redirect('/');

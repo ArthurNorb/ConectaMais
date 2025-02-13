@@ -6,7 +6,7 @@
                     <h2 class="mr-auto text-2xl font-semibold text-themeColor">Editar Contato</h2>
                     <div class="w-full mt-3 sm:w-auto sm:ml-auto sm:mt-0"></div>
                 </div>
-                <form action="{{ route('contatos.update', $contato->pessoa_id) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('contatos.update', $contato->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="mt-4">
@@ -167,7 +167,7 @@
                         </div>
                     </div>
                     <h4 class="py-2 mr-auto text-xl font-bold text-themeColor">Redes Sociais</h4>
-                    <livewire:rede-social :contato="$contato" />
+                    <livewire:rede-social :contatoId="$contato->id" />
                     <p class="my-4 text-base text-right text-red-500">
                         Campos obrigatórios marcados com asterisco <abbr title="Required field">*</abbr>
                     </p>
