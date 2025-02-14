@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Pessoa extends Model
@@ -23,8 +24,8 @@ class Pessoa extends Model
         'birthday',
         'celular',
         'fixo',
-        'endereco_id',
-        'user_id',
+        'enderecos_id',
+        'users_id',
     ];
 
     protected $casts = [
@@ -34,6 +35,10 @@ class Pessoa extends Model
 
     public function enderecos(): HasOne {
         return $this->hasOne(Endereco::class, 'enderecos_id', 'id');
+    }
+
+    public function redesSociais() : HasMany {
+        return $this->hasMany(RedeSocial::class, 'pessoas_id', 'id');
     }
 
     protected $guarded = [];

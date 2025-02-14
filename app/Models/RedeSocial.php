@@ -10,12 +10,11 @@ class RedeSocial extends Model
     use HasFactory;
     protected $table = 'redes_sociais';
 
-    // Campos que podem ser preenchidos em massa (não inclua 'id')
     protected $fillable = [
         'id',
         'nome',
         'link',
-        'pessoa_id',
+        'pessoas_id',
     ];
 
     protected $casts = [
@@ -25,6 +24,6 @@ class RedeSocial extends Model
 
     public function pessoa()
     {
-        return $this->belongsTo(Pessoa::class, 'pessoa_id', 'id');
+        return $this->belongsTo(Pessoa::class, 'pessoas_id', 'id');
     }
 }
