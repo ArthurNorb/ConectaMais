@@ -10,9 +10,12 @@ class RedeSocial extends Component
 {
     public $redes = [];
     public $contatoId;
+    public $keyIdentifier; 
 
-    public function mount()
+    public function mount($contatoId)
     {
+        $this->contatoId = $contatoId;
+        $this->keyIdentifier = 'rede-social-' . $contatoId;
         $this->redes = $this->getRedes();
     }
 

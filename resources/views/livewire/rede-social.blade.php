@@ -1,7 +1,7 @@
 <div class="flex flex-col space-y-3 text-xs">
     {{-- @dd($redes) --}}
     @foreach ($redes as $index => $rede)
-        <div>
+        <div wire:key="rede-{{ $index }}-{{ $rede['id'] }}">
             <div class="flex mb-2 space-x-4">
                 <div class="w-2/5">
                     <label class="block font-semibold text-themeColor">Nome</label>

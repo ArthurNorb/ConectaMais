@@ -167,7 +167,7 @@
                         </div>
                     </div>
                     <h4 class="py-2 mr-auto text-sm font-bold text-themeColor">Redes Sociais</h4>
-                    <livewire:rede-social :contatoId="$contato->id" />
+                    <livewire:rede-social :contatoId="$contato->id" wire:key="rede-social-{{ $contato->id }}" />
                     <p class="my-4 text-xs text-right text-red-600">
                         Campos obrigatórios marcados com asterisco <abbr title="Required field">*</abbr>
                     </p>

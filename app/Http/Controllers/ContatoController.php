@@ -179,35 +179,42 @@ class ContatoController extends Controller
     {
         $pessoa = Pessoa::findOrFail($id);
 
-        if ($request->input('rua')) {
+        // Se algum campo de endereço foi preenchido, valida e atualiza/cria o endereço
+        if (
+            $request->filled('rua') ||
+            $request->filled('numero') ||
+            $request->filled('cidade') ||
+            $request->filled('estado_id') ||
+            $request->filled('cep')
+        ) {
             $request->validate([
-                'rua'    => 'nullable|required_with:numero,cidade,uf,cep',
-                'numero' => 'nullable|required_with:rua,cidade,uf,cep',
-                'cidade' => 'nullable|required_with:rua,numero,uf,cep',
-                'uf'     => 'nullable|required_with:rua,numero,cidade,cep',
-                'cep'    => 'nullable|required_with:rua,numero,cidade,uf',
+                'rua'       => 'required_with:numero,cidade,estado_id,cep',
+                'numero'    => 'required_with:rua,cidade,estado_id,cep',
+                'cidade'    => 'required_with:rua,numero,estado_id,cep',
+                'estado_id' => 'required_with:rua,numero,cidade,cep',
+                'cep'       => 'required_with:rua,numero,cidade,estado_id',
             ]);
 
             if ($pessoa->enderecos_id) {
                 $endereco = Endereco::find($pessoa->enderecos_id);
-                $endereco->rua = $request->input('rua');
-                $endereco->numero = $request->input('numero');
-                $endereco->cidade = $request->input('cidade');
-                $endereco->cep = $request->input('cep');
-                $endereco->estados_id = $request->input('uf');
-                $endereco->save();
             } else {
                 $endereco = new Endereco;
-                $endereco->rua = $request->input('rua');
-                $endereco->numero = $request->input('numero');
-                $endereco->cidade = $request->input('cidade');
-                $endereco->cep = $request->input('cep');
-                $endereco->estados_id = $request->input('uf');
-                $endereco->save();
+            }
+            $endereco->rua = $request->input('rua');
+            $endereco->numero = $request->input('numero');
+            $endereco->cidade = $request->input('cidade');
+            $endereco->cep = $request->input('cep');
+            // Aqui usamos "estado_id" para refletir o nome do campo do formulário
+            $endereco->estados_id = $request->input('estado_id');
+            $endereco->save();
+
+            // Se for um novo endereço, associa-o ao contato
+            if (!$pessoa->enderecos_id) {
                 $pessoa->enderecos_id = $endereco->id;
             }
         }
 
+        // Atualiza o avatar, se houver arquivo válido
         if ($request->hasFile('avatar') && $request->file('avatar')->isValid()) {
             $requestImage = $request->file('avatar');
             $extension = $requestImage->extension();
@@ -216,6 +223,7 @@ class ContatoController extends Controller
             $pessoa->avatar = 'img/avatares/' . $imageName;
         }
 
+        // Atualiza os dados básicos do contato
         $pessoa->nome = $request->input('nome');
         $pessoa->sobrenome = $request->input('sobrenome');
         $pessoa->apelido = $request->input('apelido');
@@ -225,7 +233,9 @@ class ContatoController extends Controller
         $pessoa->fixo = $request->input('fixo');
         $pessoa->save();
 
+        // Atualiza as redes sociais
         if ($request->has('redes') && is_array($request->redes)) {
+            // Remove redes sociais existentes
             $pessoa->redesSociais()->delete();
             foreach ($request->redes as $rede) {
                 if (isset($rede['nome']) && isset($rede['link'])) {
@@ -237,7 +247,6 @@ class ContatoController extends Controller
             }
         }
 
-        DD('ok');
         return redirect('/');
     }
 

@@ -11,7 +11,7 @@
 @section('content')
     <div x-data="{ showEdit: false }">
         <div class="flex justify-center px-4 py-6 sm:px-10">
-            <div class="w-full max-w-2xl p-6 space-y-4 bg-white shadow-lg rounded-xl">
+            <div class="w-auto p-6 space-y-4 bg-white shadow-lg w-min-2xl rounded-xl">
                 <div class="flex flex-col items-center gap-1 sm:flex-row sm:items-center">
                     <h2 class="text-base font-semibold sm:text-lg text-themeColor">
                         {{ $contato->nome_pessoa }} {{ $contato->sobrenome }}

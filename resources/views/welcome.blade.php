@@ -56,8 +56,7 @@
                                         @if ($contato->redesSociais()->get())
                                             @foreach ($contato->redesSociais()->limit(3)->get() as $redes)
                                                 <p class="mt-1 text-sm truncate text-themeColorLight">
-                                                    <b>{{ $redes->nome }}:</b> <a
-                                                        href="{{ $redes->link }}">{{ $redes->link }}</a>
+                                                    <b>{{ $redes->nome }}:</b> {{ $redes->link }}</
                                                 </p>
                                             @endforeach
                                         @endif
